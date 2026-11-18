@@ -3,279 +3,200 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Goal Keeper Store | متجر مستلزمات كرة القدم</title>
+    <title>Goal Keeper Store | شركة توريد مستلزمات كرة القدم</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --amz-dark: #131921;
-            --amz-nav: #232f3e;
-            --amz-orange: #febd69;
-            --amz-orange-hover: #f3a847;
-            --amz-yellow: #ffd814;
-            --amz-yellow-hover: #f7ca00;
-            --bg-gray: #eaeded;
-            --text-dark: #0f1111;
-            --price-red: #B12704;
+            --primary-dark: #0f172a;
+            --primary-blue: #1e293b;
+            --accent-orange: #f59e0b;
+            --accent-green: #22c55e;
+            --bg-light: #f8fafc;
+            --text-main: #334155;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
-        body { background-color: var(--bg-gray); color: var(--text-dark); }
+        body { background-color: var(--bg-light); color: var(--text-main); line-height: 1.6; }
 
-        header { 
-            background-color: var(--amz-dark); color: white; padding: 10px 3%; 
-            display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 15px; 
-            position: sticky; top: 0; z-index: 1000; 
+        header {
+            background-color: var(--primary-dark);
+            color: white;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 3px solid var(--accent-orange);
         }
-        .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; color: white; }
-        .logo-icon { background: var(--amz-orange); color: var(--amz-dark); font-weight: 900; padding: 4px 10px; border-radius: 6px; font-size: 1.2rem; }
-        .logo-text h1 { font-size: 1.3rem; font-weight: 900; line-height: 1.1; }
-        .logo-text span { color: var(--amz-orange); font-size: 0.75rem; font-weight: 700; }
 
-        .search-bar { flex: 1; min-width: 260px; max-width: 650px; display: flex; border-radius: 6px; overflow: hidden; }
-        .search-bar input { width: 100%; padding: 10px 15px; border: none; outline: none; font-size: 0.95rem; }
-        .search-bar button { background: var(--amz-orange); border: none; padding: 0 18px; cursor: pointer; font-size: 1.1rem; font-weight: bold; }
+        .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: white; }
+        .logo-icon { background: var(--accent-orange); color: var(--primary-dark); font-weight: 900; padding: 6px 12px; border-radius: 8px; font-size: 1.3rem; }
+        .logo-text h1 { font-size: 1.4rem; font-weight: 900; }
+        .logo-text span { color: var(--accent-orange); font-size: 0.8rem; display: block; }
 
-        .cart-btn { background: transparent; border: 1px solid transparent; color: white; padding: 6px 12px; border-radius: 4px; cursor: pointer; display: flex; align-items: center; gap: 8px; font-weight: 700; }
-        .cart-count { background: var(--amz-orange); color: var(--amz-dark); font-weight: 900; padding: 1px 7px; border-radius: 50%; font-size: 0.85rem; }
+        nav { display: flex; gap: 20px; }
+        nav a { color: white; text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: color 0.2s; }
+        nav a:hover { color: var(--accent-orange); }
 
-        .sub-nav { background-color: var(--amz-nav); padding: 8px 3%; display: flex; gap: 10px; overflow-x: auto; white-space: nowrap; }
-        .cat-btn { background: transparent; color: white; border: 1px solid transparent; padding: 5px 14px; border-radius: 4px; cursor: pointer; font-size: 0.9rem; font-weight: 600; }
-        .cat-btn:hover, .cat-btn.active { border-color: white; background: rgba(255,255,255,0.1); color: var(--amz-orange); }
+        .hero {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-blue));
+            color: white;
+            padding: 80px 5%;
+            text-align: center;
+        }
+        .hero h2 { font-size: 2.5rem; font-weight: 900; color: var(--accent-orange); margin-bottom: 15px; }
+        .hero p { font-size: 1.1rem; max-width: 700px; margin: 0 auto 25px; color: #cbd5e1; }
+        
+        .btn-contact {
+            background: var(--accent-green);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: inline-block;
+            transition: background 0.2s;
+        }
+        .btn-contact:hover { background: #16a34a; }
 
-        .hero-banner { background: linear-gradient(to left, #0f172a, #1e293b); color: white; padding: 2rem 4%; text-align: center; border-bottom: 4px solid var(--amz-orange); }
-        .hero-banner h2 { font-size: 1.8rem; font-weight: 900; color: var(--amz-orange); margin-bottom: 5px; }
-        .hero-banner p { font-size: 1rem; color: #e2e8f0; }
+        .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--primary-dark);
+            margin-bottom: 40px;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--accent-orange);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
 
-        .container { max-width: 1300px; margin: 20px auto; padding: 0 15px; }
-        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 15px; }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
 
-        .product-card { background: white; border-radius: 4px; padding: 15px; display: flex; flex-direction: column; justify-content: space-between; border: 1px solid #d5d9d9; position: relative; transition: box-shadow 0.2s; }
-        .product-card:hover { box-shadow: 0 0 10px rgba(0,0,0,0.1); }
-        .badge-bestseller { position: absolute; top: 12px; right: 12px; background: #c45500; color: white; font-size: 0.7rem; font-weight: 700; padding: 3px 8px; border-radius: 2px; z-index: 10; }
+        .service-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
 
-        .product-img-box { width: 100%; height: 180px; background: #ffffff; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; }
-        .product-img-box img { max-width: 100%; max-height: 100%; object-fit: contain; }
+        .service-icon { font-size: 3.5rem; margin-bottom: 15px; }
+        .service-card h3 { font-size: 1.25rem; font-weight: 700; color: var(--primary-dark); margin-bottom: 10px; }
+        .service-card p { font-size: 0.95rem; color: #64748b; }
 
-        .product-title { font-size: 0.95rem; font-weight: 700; color: var(--text-dark); margin: 5px 0; line-height: 1.3; }
-        .product-category-tag { font-size: 0.75rem; color: #007185; font-weight: 600; margin-bottom: 4px; }
-        .rating-box { display: flex; align-items: center; gap: 5px; font-size: 0.85rem; margin-bottom: 6px; }
-        .stars { color: #ffa41c; letter-spacing: -1px; }
-        .rating-count { color: #007185; }
-        .sales-info { font-size: 0.75rem; color: #565959; margin-bottom: 6px; font-weight: 600; }
-        .price-box { margin: 6px 0; display: flex; align-items: baseline; gap: 4px; }
-        .currency-symbol { font-size: 0.75rem; font-weight: 700; vertical-align: super; }
-        .current-price { font-size: 1.35rem; font-weight: 700; color: var(--price-red); }
-        .old-price { font-size: 0.8rem; color: #565959; text-decoration: line-through; margin-right: 6px; }
-        .pickup-note { font-size: 0.75rem; color: #565959; font-weight: 600; margin-bottom: 10px; }
+        .about-section {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            margin-top: 50px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
+        }
+        .about-section h3 { font-size: 1.6rem; color: var(--primary-dark); margin-bottom: 15px; font-weight: 900; }
+        .about-section p { font-size: 1.05rem; color: #475569; margin-bottom: 15px; }
 
-        .btn-add-cart { background: var(--amz-yellow); border: 1px solid #fcd200; color: #0f1111; padding: 8px 12px; border-radius: 20px; font-weight: 700; cursor: pointer; width: 100%; font-size: 0.9rem; transition: background 0.2s; box-shadow: 0 2px 5px rgba(213,217,217,.5); }
-        .btn-add-cart:hover { background: var(--amz-yellow-hover); }
-
-        .modal-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.6); z-index: 2000; justify-content: center; align-items: center; padding: 15px; }
-        .cart-modal { background: white; width: 100%; max-width: 500px; border-radius: 8px; padding: 20px; max-height: 85vh; overflow-y: auto; }
-        .modal-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; padding-bottom: 10px; margin-bottom: 15px; }
-        .close-btn { background: none; border: none; font-size: 1.5rem; cursor: pointer; font-weight: bold; }
-        .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #eee; }
-        .remove-item { color: #cc0c39; background: none; border: none; cursor: pointer; font-weight: 700; }
-        .cart-total { font-size: 1.2rem; font-weight: 900; margin: 15px 0; }
-        .btn-whatsapp-order { background: #25d366; color: white; border: none; width: 100%; padding: 12px; border-radius: 8px; font-size: 1rem; font-weight: 700; cursor: pointer; }
-        .btn-whatsapp-order:hover { background: #1ebd59; }
-
-        footer { background: var(--amz-dark); color: #ddd; text-align: center; padding: 25px; margin-top: 40px; }
+        footer {
+            background: var(--primary-dark);
+            color: #cbd5e1;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+            border-top: 3px solid var(--accent-orange);
+        }
+        footer strong { color: white; }
     </style>
 </head>
 <body>
+
     <header>
         <a href="#" class="logo">
             <div class="logo-icon">GK</div>
             <div class="logo-text">
-                <h1>Goal Keeper Store</h1>
-                <span>متجر المحترفين</span>
+                <h1>Goal Keeper</h1>
+                <span>شركة توريد مستلزمات الرياضة</span>
             </div>
         </a>
-        <div class="search-bar">
-            <input type="text" id="searchInput" placeholder="ابحث عن استرز، تيشيرت، جونت، كرة..." onkeyup="filterProducts()">
-            <button onclick="filterProducts()">🔍</button>
-        </div>
-        <button class="cart-btn" onclick="openCart()">🛒 عربة التسوق <span class="cart-count" id="cartCount">0</span></button>
+        <nav>
+            <a href="#services">خدماتنا</a>
+            <a href="#about">عن الشركة</a>
+            <a href="#contact">تواصل معنا</a>
+        </nav>
     </header>
 
-    <div class="sub-nav">
-        <button class="cat-btn active" onclick="filterCategory('all', this)">الكل</button>
-        <button class="cat-btn" onclick="filterCategory('boots', this)">👟 استرزات وأحذية</button>
-        <button class="cat-btn" onclick="filterCategory('kits', this)">👕 تيشيرتات وأطقم</button>
-        <button class="cat-btn" onclick="filterCategory('gloves', this)">🧤 جونتات حراس</button>
-        <button class="cat-btn" onclick="filterCategory('socks', this)">🧦 شرابات وشناكات</button>
-        <button class="cat-btn" onclick="filterCategory('balls', this)">⚽ كور قدم</button>
-    </div>
-
-    <section class="hero-banner">
-        <h2>Goal Keeper Store</h2>
-        <p>معدات ومستلزمات كرة القدم الأصلية - احجز عبر واتساب واستلم من المعرض مباشرة.</p>
+    <section class="hero">
+        <h2>شركة Goal Keeper لتوريد وتجهيز معدات كرة القدم</h2>
+        <p>المصدر الموثوق للأندية، الأكاديميات، والملاعب. تجهيزات أصلية 100% معتمدة للاستلام المباشر من المعرض.</p>
+        <a href="https://wa.me/201062962959?text=سلام%20عليكم،%20أريد%20الاستفسار%20عن%20خدمات%20وتوريدات%20شركة%20Goal%20Keeper" class="btn-contact" target="_blank">💬 تواصل مع إدارة المبيعات</a>
     </section>
 
-    <div class="container">
-        <div class="products-grid" id="productsGrid"></div>
-    </div>
-
-    <div class="modal-overlay" id="cartModal">
-        <div class="cart-modal">
-            <div class="modal-header">
-                <h3>🛒 عربة التسوق</h3>
-                <button class="close-btn" onclick="closeCart()">×</button>
+    <div class="container" id="services">
+        <h2 class="section-title">قطاعات التوريد والخدمات</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">👟</div>
+                <h3>الأحذية والاسترزات الاحترافية</h3>
+                <p>توريد أحدث موديلات أحذية الملاعب (نايكي، أديداس، بوما) بمختلف المقاسات المخصصة للنجيل الصناعي والطبيعي.</p>
             </div>
-            <div id="cartItemsContainer"></div>
-            <div class="cart-total" id="cartTotal">الإجمالي: 0 جنيه</div>
-            <button class="btn-whatsapp-order" onclick="checkoutWhatsApp()">💬 إتمام الحجز عبر واتساب</button>
+            <div class="service-card">
+                <div class="service-icon">👕</div>
+                <h3>أطقم الأندية والفرق الرياضية</h3>
+                <p>تجهيز أطقم كاملة للمنتخبات والأندية والفرق الرياضية بجودات بوليستر ممتازة وطباعة شعارات حسب الطلب.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🧤</div>
+                <h3>معدات حراسة المرمى</h3>
+                <p>قفازات حراسة أصلية بلاتكس قوية مع دعامات لحماية الأصابع لضمان أعلى أداء في المباريات.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">⚽</div>
+                <h3>كرات القدم المعتمدة</h3>
+                <p>كور قدم مقاس 5 خياطة حرارية مطابقة للمواصفات الرسمية للتدريبات والمنافسات الرسمية.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🧦</div>
+                <h3>الملحقات والشرابات الرياضية</h3>
+                <p>توريد شرابات الجريب المانعة للانزلاق، واقيات الساق (الشناكات)، ومعدات التدريب المتكاملة.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🏢</div>
+                <h3>خدمة الاستلام المباشر</h3>
+                <p>مقر رئيسي لخدمة العملاء واستلام الطلبات والكميات مباشرة من المعرض بدون شحن منزلي.</p>
+            </div>
+        </div>
+
+        <div class="about-section" id="about">
+            <h3>من نحن | Goal Keeper</h3>
+            <p>نحن شركة متخصصة في توريد وتجهيز مستلزمات كرة القدم وخدمة الأندية والأكاديميات الرياضية بأفضل خامات السوق المصري والعالمي.</p>
+            <p>نلتزم بتقديم منتجات عالية الجودة، وتوفير خدمة عملاء احترافية عبر قنوات التواصل المباشر والحجز المسبق للاستلام من مقر الشركة.</p>
         </div>
     </div>
 
-    <footer>جميع الحقوق محفوظة © 2026 <strong>Goal Keeper Store</strong> | الحجز والاستلام المباشر ⚽</footer>
+    <footer id="contact">
+        <p>جميع الحقوق محفوظة © 2026 <strong>Goal Keeper Store</strong> | الاستلام المباشر من المعرض ⚽</p>
+        <p style="margin-top: 8px; font-size: 0.9rem; color: #94a3b8;">للاستفسارات والتعاقدات التجارية: 01062962959</p>
+    </footer>
 
-    <script>
-        const products = [
-            // استرزات وأحذية (Boots)
-            { id: 1, category: 'boots', name: 'حذاء كرة قدم نايكي ميركوريال برو للنجيل الصناعي', price: 1450.00, oldPrice: 1800.00, badge: 'الأكثر مبيعاً', rating: '★★★★☆', reviews: '142', sales: 'تم شراء 100+ سلعة مؤخراً', img: 'https://m.media-amazon.com/images/I/61y4K6+aXbL._AC_UL480_FMwebp_QL65_.jpg' },
-            { id: 2, category: 'boots', name: 'حذاء كرة قدم أديداس إكس خفيف للسرعة', price: 1350.00, oldPrice: 1650.00, badge: '', rating: '★★★★★', reviews: '84', sales: 'تم شراء 50+ سلعة مؤخراً', img: 'https://m.media-amazon.com/images/I/71Y+m61l-5L._AC_UL480_FMwebp_QL65_.jpg' },
-            { id: 3, category: 'boots', name: 'حذاء بوما ألترا ماتش للتدريبات والمباريات', price: 1200.00, oldPrice: 1500.00, badge: '', rating: '★★★★☆', reviews: '65', sales: 'تم شراء 70+ سلعة مؤخراً', img: 'https://m.media-amazon.com/images/I/61Yh2n973CL._AC_UL480_FMwebp_QL65_.jpg' },
-            { id: 4, category: 'boots', name: 'حذاء كرة قدم فانتوم إلتقاط سريع للنجيل الطبيعي', price: 1600.00, oldPrice: 1950.00, badge: 'عرض خاص', rating: '★★★★★', reviews: '110', sales: 'تم شراء 85+ سلعة مؤخراً', img: 'https://m.media-amazon.com/images/I/61y4K6+aXbL._AC_UL480_FMwebp_QL65_.jpg' },
-            { id: 5, category: 'boots', name: 'حذاء أديداس كوبا صبغة جلد أصلي للتحكم', price: 1550.00, oldPrice: 1850.00, badge: '', rating: '★★★★★', reviews: '95', sales: 'تم شراء 60+ سلعة مؤخراً', img: 'https://m.media-amazon.com/images/I/71Y+m61l-5L._AC_UL480_FMwebp_QL65_.jpg' },
-
-            // تيشيرتات وأطقم (Kits)
-            { id: 6, category: 'kits', name: 'طقم نادي ريال مدريد الأساسي موسم جديد', price: 550.00, oldPrice: 700.00, badge: 'الأكثر مبيعاً', rating: '★★★★★', reviews: '215', sales: 'تم شراء 300+ سلعة مؤخراً', img: 'https://m.media-amazon.com/images/I/71yV8a36vPL._AC_UL480_FMwebp_QL65_.jpg' },
-            { id: 7, category: 'kits', name: 'طقم نادي برشلونة الأساسي خامة رياضية ممتازة', price: 550.00, oldPrice: 700.00, badge: '', rating: '★★★★★', reviews: '190', sales: 'تم شراء 200+ سلعة مؤخراً', img: 'https://m.media-amazon.com/images/I/61Yh2n973CL._AC_UL480_FMwebp_QL65_.jpg' },
-            { id: 8, category: 'kits', name: 'طقم منتخب مصر الأول لكرة القدم الأساسي أحمر', price: 500.00, oldPrice: 650.00, badge: 'الأكثر مبيعاً', rating: '★★★★★', reviews: '340', sales: 'تم شراء 450+ سلعة مؤخراً', img: 'https://m.media-amazon.com/images/I/71yV8a36vPL._AC_UL480_FMwebp_QL65_.jpg' },
-            { id: 9, category: 'kits', name: 'شورت رياضي كرة قدم رجالي سريع الجفاف', price: 180.00, oldPrice: 250.00, badge: '', rating: '★★★★☆', reviews: '95', sales: 'تم شراء 150+ سلعة مؤخراً', img: 'https://m.media-amazon.com/images/I/61NqKzJzWkL._AC_UL480_FMwebp_QL65_.jpg' },
-            { id: 10, category: 'kits', name: 'تيشيرت تمرين سادة بوليستر عالي الجودة', price: 220.00, oldPrice: 300.00, badge: '', rating: '★★★★☆', reviews: '78', sales: 'تم شراء 130+ سلعة مؤخراً', img: 'https://m.media-amazon.com/images/I/61Yh2n973CL._AC_UL480_FMwebp_QL65_.jpg' },
-
-            // جونتات حراس (Gloves)
-            { id: 11, category: 'gloves', name: 'قفازات حراسة مرمى أديداس بريداتور بلاتكس قوي', price: 950.00, oldPrice: 1200.00, badge: 'الأكثر مبيعاً', rating: '★★★★★', reviews: '98', sales: 'تم شراء 90+ سلعة مؤخراً', img: 'https://m.media-amazon.com/images/I/71b2V5q3L7L._AC_UL480_FMwebp_QL65_.jpg' },
-            { id: 12, category: 'gloves', name: 'قفازات حراسة مرمى مع دعامات لحماية الأصابع', price: 820.00, oldPrice: 1000.00, badge: '', rating: '★★★★☆', reviews: '63', sales: 'تم شراء 60+ سلعة مؤخراً', img: 'https://m.media-amazon.com/images/I/71lq1Wq8zLL._AC_UL480_FMwebp_QL65_.jpg' },
-            { id: 13, category: 'gloves', name: 'قفازات حارس مرمى نايكي ماتش لاتكس مانع للانزلاق', price: 890.00, oldPrice: 1100.00, badge: 'عرض خاص', rating: '★★★★★', reviews: '74', sales: 'تم شراء 75+ سلعة مؤخراً', img: 'https://m.media-amazon.com/images/I/71b2V5q3L7L._AC_UL480_FMwebp_QL65_.jpg' },
-
-            // شرابات وشناكات (Socks & Guards)
-            { id: 14, category: 'socks', name: 'شرابات رياضية مانعة للانزلاق لكرة القدم (Grip)', price: 120.00, oldPrice: 180.00, badge: 'الأكثر مبيعاً', rating: '★★★★★', reviews: '320', sales: 'تم شراء 500+ سلعة مؤخراً', img: 'https://m.media-amazon.com/images/I/71h3J5w6XIL._AC_UL480_FMwebp_QL65_.jpg' },
-            { id: 15, category: 'socks', name: 'واقي ساق (شناكار) متين ومريح ضد الصدمات', price: 130.00, oldPrice: 170.00, badge: '', rating: '★★★★☆', reviews: '140', sales: 'تم شراء 120+ سلعة مؤخراً', img: 'https://m.media-amazon.com/images/I/61k2L4w9ZLL._AC_UL480_FMwebp_QL65_.jpg' },
-            { id: 16, category: 'socks', name: 'شرابات طويلة للتمارين موحدة اللون قطن وبوليستر', price: 75.00, oldPrice: 110.00, badge: '', rating: '★★★★☆', reviews: '210', sales: 'تم شراء 350+ سلعة مؤخراً', img: 'https://m.media-amazon.com/images/I/71h3J5w6XIL._AC_UL480_FMwebp_QL65_.jpg' },
-
-            // كور قدم (Balls)
-            { id: 17, category: 'balls', name: 'كرة قدم احترافية مقاس 5 خياطة حرارية متينة', price: 680.00, oldPrice: 850.00, badge: 'الأكثر مبيعاً', rating: '★★★★★', reviews: '76', sales: 'تم شراء 80+ سلعة مؤخراً', img: 'https://m.media-amazon.com/images/I/81x2Y7W7-CL._AC_UL480_FMwebp_QL65_.jpg' },
-            { id: 18, category: 'balls', name: 'كرة قدم أديداس الرسمية للتدريبات والمباريات', price: 750.00, oldPrice: 950.00, badge: 'عرض خاص', rating: '★★★★★', reviews: '120', sales: 'تم شراء 180+ سلعة مؤخراً', img: 'https://m.media-amazon.com/images/I/81Lz3W9K+CL._AC_UL480_FMwebp_QL65_.jpg' },
-            { id: 19, category: 'balls', name: 'كرة قدم نايكي فلايت للملاعب المفتوحة', price: 820.00, oldPrice: 1050.00, badge: '', rating: '★★★★★', reviews: '54', sales: 'تم شراء 65+ سلعة مؤخراً', img: 'https://m.media-amazon.com/images/I/81x2Y7W7-CL._AC_UL480_FMwebp_QL65_.jpg' },
-            { id: 20, category: 'balls', name: 'كرة قدم مصغرة للتدريب على المهارات الفردية', price: 350.00, oldPrice: 450.00, badge: '', rating: '★★★★☆', reviews: '88', sales: 'تم شراء 110+ سلعة مؤخراً', img: 'https://m.media-amazon.com/images/I/81Lz3W9K+CL._AC_UL480_FMwebp_QL65_.jpg' }
-        ];
-
-        const STORE_WHATSAPP = "201062962959";
-        let cart = [];
-        let currentCategory = 'all';
-
-        function renderProducts(items) {
-            const grid = document.getElementById('productsGrid');
-            grid.innerHTML = '';
-            if (items.length === 0) {
-                grid.innerHTML = '<p style="grid-column: 1/-1; text-align:center; padding: 30px; font-weight:bold;">لا توجد منتجات مطابقة لبحثك.</p>';
-                return;
-            }
-            items.forEach(p => {
-                let badgeHTML = p.badge ? `<span class="badge-bestseller">${p.badge}</span>` : '';
-                grid.innerHTML += `
-                    <div class="product-card">
-                        ${badgeHTML}
-                        <div class="product-img-box">
-                            <img src="${p.img}" alt="${p.name}">
-                        </div>
-                        <div>
-                            <div class="product-category-tag">${getCategoryName(p.category)}</div>
-                            <h3 class="product-title">${p.name}</h3>
-                            <div class="rating-box">
-                                <span class="stars">${p.rating}</span>
-                                <span class="rating-count">${p.reviews}</span>
-                            </div>
-                            <div class="sales-info">${p.sales}</div>
-                            <div class="price-box">
-                                <span class="currency-symbol">ج.م</span>
-                                <span class="current-price">${p.price.toFixed(2)}</span>
-                                <span class="old-price">${p.oldPrice.toFixed(2)} ج.م</span>
-                            </div>
-                            <div class="pickup-note">متاح الحجز والاستلام المباشر من المعرض</div>
-                            <button class="btn-add-cart" onclick="addToCart(${p.id})">إضافة إلى عربة التسوق</button>
-                        </div>
-                    </div>
-                `;
-            });
-        }
-
-        function getCategoryName(cat) {
-            const names = { boots: 'استرزات وأحذية', kits: 'تيشيرتات وأطقم', gloves: 'جونتات حراس', socks: 'شرابات وشناكات', balls: 'كور قدم' };
-            return names[cat] || '';
-        }
-
-        function filterCategory(cat, btn) {
-            currentCategory = cat;
-            document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            filterProducts();
-        }
-
-        function filterProducts() {
-            const query = document.getElementById('searchInput').value.toLowerCase();
-            const filtered = products.filter(p => {
-                const matchCat = currentCategory === 'all' || p.category === currentCategory;
-                const matchText = p.name.toLowerCase().includes(query);
-                return matchCat && matchText;
-            });
-            renderProducts(filtered);
-        }
-
-        function addToCart(id) {
-            cart.push(products.find(p => p.id === id));
-            updateCartUI();
-        }
-
-        function removeFromCart(index) {
-            cart.splice(index, 1);
-            updateCartUI();
-        }
-
-        function updateCartUI() {
-            document.getElementById('cartCount').textContent = cart.length;
-            const container = document.getElementById('cartItemsContainer');
-            const totalEl = document.getElementById('cartTotal');
-            if (cart.length === 0) {
-                container.innerHTML = '<p style="text-align:center; color:#666; padding:20px;">عربة التسوق فارغة حالياً</p>';
-                totalEl.textContent = 'الإجمالي: 0.00 جنيه';
-                return;
-            }
-            let total = 0;
-            container.innerHTML = '';
-            cart.forEach((item, idx) => {
-                total += item.price;
-                container.innerHTML += `
-                    <div class="cart-item">
-                        <div><strong>${item.name}</strong><br><span style="color:#B12704; font-weight:bold;">${item.price.toFixed(2)} ج.م</span></div>
-                        <button class="remove-item" onclick="removeFromCart(${idx})">حذف</button>
-                    </div>
-                `;
-            });
-            totalEl.textContent = `الإجمالي: ${total.toFixed(2)} جنيه`;
-        }
-
-        function openCart() { updateCartUI(); document.getElementById('cartModal').style.display = 'flex'; }
-        function closeCart() { document.getElementById('cartModal').style.display = 'none'; }
-
-        function checkoutWhatsApp() {
-            if (cart.length === 0) { alert('عربة التسوق فارغة!'); return; }
-            let message = "سلام عليكم، أريد حجز المنتجات التالية من متجر *Goal Keeper Store* (استلام مباشر من المعرض):\n\n";
-            let total = 0;
-            cart.forEach((item, i) => {
-                message += `${i + 1}- ${item.name} (${item.price.toFixed(2)} ج.م)\n`;
-                total += item.price;
-            });
-            message += `\n*الإجمالي المطلوب:* ${total.toFixed(2)} جنيه مصري`;
-            window.open(`https://wa.me/${STORE_WHATSAPP}?text=` + encodeURIComponent(message), '_blank');
-        }
-
-        renderProducts(products);
-    </script>
 </body>
 </html>
