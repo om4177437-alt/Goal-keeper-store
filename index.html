@@ -18,389 +18,70 @@
             --price-red: #B12704;
         }
 
-        * { 
-            margin: 0; 
-            padding: 0; 
-            box-sizing: border-box; 
-            font-family: 'Cairo', sans-serif; 
-        }
-
-        body { 
-            background-color: var(--bg-gray); 
-            color: var(--text-dark); 
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
+        body { background-color: var(--bg-gray); color: var(--text-dark); }
 
         header { 
-            background-color: var(--amz-dark); 
-            color: white; 
-            padding: 10px 3%; 
-            display: flex; 
-            flex-wrap: wrap; 
-            align-items: center; 
-            justify-content: space-between; 
-            gap: 15px; 
-            position: sticky; 
-            top: 0; 
-            z-index: 1000; 
+            background-color: var(--amz-dark); color: white; padding: 10px 3%; 
+            display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 15px; 
+            position: sticky; top: 0; z-index: 1000; 
         }
+        .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; color: white; }
+        .logo-icon { background: var(--amz-orange); color: var(--amz-dark); font-weight: 900; padding: 4px 10px; border-radius: 6px; font-size: 1.2rem; }
+        .logo-text h1 { font-size: 1.3rem; font-weight: 900; line-height: 1.1; }
+        .logo-text span { color: var(--amz-orange); font-size: 0.75rem; font-weight: 700; }
 
-        .logo { 
-            display: flex; 
-            align-items: center; 
-            gap: 8px; 
-            text-decoration: none; 
-            color: white; 
-        }
+        .search-bar { flex: 1; min-width: 260px; max-width: 650px; display: flex; border-radius: 6px; overflow: hidden; }
+        .search-bar input { width: 100%; padding: 10px 15px; border: none; outline: none; font-size: 0.95rem; }
+        .search-bar button { background: var(--amz-orange); border: none; padding: 0 18px; cursor: pointer; font-size: 1.1rem; font-weight: bold; }
 
-        .logo-icon { 
-            background: var(--amz-orange); 
-            color: var(--amz-dark); 
-            font-weight: 900; 
-            padding: 4px 10px; 
-            border-radius: 6px; 
-            font-size: 1.2rem; 
-        }
+        .cart-btn { background: transparent; border: 1px solid transparent; color: white; padding: 6px 12px; border-radius: 4px; cursor: pointer; display: flex; align-items: center; gap: 8px; font-weight: 700; }
+        .cart-count { background: var(--amz-orange); color: var(--amz-dark); font-weight: 900; padding: 1px 7px; border-radius: 50%; font-size: 0.85rem; }
 
-        .logo-text h1 { 
-            font-size: 1.3rem; 
-            font-weight: 900; 
-            line-height: 1.1; 
-        }
+        .sub-nav { background-color: var(--amz-nav); padding: 8px 3%; display: flex; gap: 10px; overflow-x: auto; white-space: nowrap; }
+        .cat-btn { background: transparent; color: white; border: 1px solid transparent; padding: 5px 14px; border-radius: 4px; cursor: pointer; font-size: 0.9rem; font-weight: 600; }
+        .cat-btn:hover, .cat-btn.active { border-color: white; background: rgba(255,255,255,0.1); color: var(--amz-orange); }
 
-        .logo-text span { 
-            color: var(--amz-orange); 
-            font-size: 0.75rem; 
-            font-weight: 700; 
-        }
+        .hero-banner { background: linear-gradient(to left, #0f172a, #1e293b); color: white; padding: 2rem 4%; text-align: center; border-bottom: 4px solid var(--amz-orange); }
+        .hero-banner h2 { font-size: 1.8rem; font-weight: 900; color: var(--amz-orange); margin-bottom: 5px; }
+        .hero-banner p { font-size: 1rem; color: #e2e8f0; }
 
-        .search-bar { 
-            flex: 1; 
-            min-width: 260px; 
-            max-width: 650px; 
-            display: flex; 
-            border-radius: 6px; 
-            overflow: hidden; 
-        }
+        .container { max-width: 1300px; margin: 20px auto; padding: 0 15px; }
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 15px; }
 
-        .search-bar input { 
-            width: 100%; 
-            padding: 10px 15px; 
-            border: none; 
-            outline: none; 
-            font-size: 0.95rem; 
-        }
+        .product-card { background: white; border-radius: 4px; padding: 15px; display: flex; flex-direction: column; justify-content: space-between; border: 1px solid #d5d9d9; position: relative; transition: box-shadow 0.2s; }
+        .product-card:hover { box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        .badge-bestseller { position: absolute; top: 12px; right: 12px; background: #c45500; color: white; font-size: 0.7rem; font-weight: 700; padding: 3px 8px; border-radius: 2px; z-index: 10; }
 
-        .search-bar button { 
-            background: var(--amz-orange); 
-            border: none; 
-            padding: 0 18px; 
-            cursor: pointer; 
-            font-size: 1.1rem; 
-            font-weight: bold; 
-        }
+        .product-img-box { width: 100%; height: 180px; background: #ffffff; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; }
+        .product-img-box img { max-width: 100%; max-height: 100%; object-fit: contain; }
 
-        .cart-btn { 
-            background: transparent; 
-            border: 1px solid transparent; 
-            color: white; 
-            padding: 6px 12px; 
-            border-radius: 4px; 
-            cursor: pointer; 
-            display: flex; 
-            align-items: center; 
-            gap: 8px; 
-            font-weight: 700; 
-            position: relative; 
-        }
+        .product-title { font-size: 0.95rem; font-weight: 700; color: var(--text-dark); margin: 5px 0; line-height: 1.3; }
+        .product-category-tag { font-size: 0.75rem; color: #007185; font-weight: 600; margin-bottom: 4px; }
+        .rating-box { display: flex; align-items: center; gap: 5px; font-size: 0.85rem; margin-bottom: 6px; }
+        .stars { color: #ffa41c; letter-spacing: -1px; }
+        .rating-count { color: #007185; }
+        .sales-info { font-size: 0.75rem; color: #565959; margin-bottom: 6px; font-weight: 600; }
+        .price-box { margin: 6px 0; display: flex; align-items: baseline; gap: 4px; }
+        .currency-symbol { font-size: 0.75rem; font-weight: 700; vertical-align: super; }
+        .current-price { font-size: 1.35rem; font-weight: 700; color: var(--price-red); }
+        .old-price { font-size: 0.8rem; color: #565959; text-decoration: line-through; margin-right: 6px; }
+        .pickup-note { font-size: 0.75rem; color: #565959; font-weight: 600; margin-bottom: 10px; }
 
-        .cart-count { 
-            background: var(--amz-orange); 
-            color: var(--amz-dark); 
-            font-weight: 900; 
-            padding: 1px 7px; 
-            border-radius: 50%; 
-            font-size: 0.85rem; 
-        }
+        .btn-add-cart { background: var(--amz-yellow); border: 1px solid #fcd200; color: #0f1111; padding: 8px 12px; border-radius: 20px; font-weight: 700; cursor: pointer; width: 100%; font-size: 0.9rem; transition: background 0.2s; box-shadow: 0 2px 5px rgba(213,217,217,.5); }
+        .btn-add-cart:hover { background: var(--amz-yellow-hover); }
 
-        .sub-nav { 
-            background-color: var(--amz-nav); 
-            padding: 8px 3%; 
-            display: flex; 
-            gap: 10px; 
-            overflow-x: auto; 
-            white-space: nowrap; 
-        }
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.6); z-index: 2000; justify-content: center; align-items: center; padding: 15px; }
+        .cart-modal { background: white; width: 100%; max-width: 500px; border-radius: 8px; padding: 20px; max-height: 85vh; overflow-y: auto; }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; padding-bottom: 10px; margin-bottom: 15px; }
+        .close-btn { background: none; border: none; font-size: 1.5rem; cursor: pointer; font-weight: bold; }
+        .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #eee; }
+        .remove-item { color: #cc0c39; background: none; border: none; cursor: pointer; font-weight: 700; }
+        .cart-total { font-size: 1.2rem; font-weight: 900; margin: 15px 0; }
+        .btn-whatsapp-order { background: #25d366; color: white; border: none; width: 100%; padding: 12px; border-radius: 8px; font-size: 1rem; font-weight: 700; cursor: pointer; }
+        .btn-whatsapp-order:hover { background: #1ebd59; }
 
-        .cat-btn { 
-            background: transparent; 
-            color: white; 
-            border: 1px solid transparent; 
-            padding: 5px 14px; 
-            border-radius: 4px; 
-            cursor: pointer; 
-            font-size: 0.9rem; 
-            font-weight: 600; 
-        }
-
-        .cat-btn:hover, .cat-btn.active { 
-            border-color: white; 
-            background: rgba(255,255,255,0.1); 
-            color: var(--amz-orange); 
-        }
-
-        .hero-banner { 
-            background: linear-gradient(to left, #0f172a, #1e293b); 
-            color: white; 
-            padding: 2rem 4%; 
-            text-align: center; 
-            border-bottom: 4px solid var(--amz-orange); 
-        }
-
-        .hero-banner h2 { 
-            font-size: 1.8rem; 
-            font-weight: 900; 
-            color: var(--amz-orange); 
-            margin-bottom: 5px; 
-        }
-
-        .hero-banner p { 
-            font-size: 1rem; 
-            color: #e2e8f0; 
-        }
-
-        .container { 
-            max-width: 1300px; 
-            margin: 20px auto; 
-            padding: 0 15px; 
-        }
-
-        .products-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); 
-            gap: 15px; 
-        }
-
-        .product-card { 
-            background: white; 
-            border-radius: 4px; 
-            padding: 15px; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: space-between; 
-            border: 1px solid #d5d9d9; 
-            position: relative; 
-            transition: box-shadow 0.2s; 
-        }
-
-        .product-card:hover { 
-            box-shadow: 0 0 10px rgba(0,0,0,0.1); 
-        }
-
-        .badge-bestseller { 
-            position: absolute; 
-            top: 12px; 
-            right: 12px; 
-            background: #c45500; 
-            color: white; 
-            font-size: 0.7rem; 
-            font-weight: 700; 
-            padding: 3px 8px; 
-            border-radius: 2px; 
-            z-index: 10; 
-        }
-
-        .product-img-box { 
-            width: 100%; 
-            height: 180px; 
-            background: #ffffff; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            margin-bottom: 10px; 
-        }
-
-        .product-img-box img { 
-            max-width: 100%; 
-            max-height: 100%; 
-            object-fit: contain; 
-        }
-
-        .product-title { 
-            font-size: 0.95rem; 
-            font-weight: 700; 
-            color: var(--text-dark); 
-            margin: 5px 0; 
-            line-height: 1.3; 
-        }
-
-        .product-category-tag { 
-            font-size: 0.75rem; 
-            color: #007185; 
-            font-weight: 600; 
-            margin-bottom: 4px; 
-        }
-
-        .rating-box { 
-            display: flex; 
-            align-items: center; 
-            gap: 5px; 
-            font-size: 0.85rem; 
-            margin-bottom: 6px; 
-        }
-
-        .stars { 
-            color: #ffa41c; 
-            letter-spacing: -1px; 
-        }
-
-        .rating-count { 
-            color: #007185; 
-        }
-
-        .sales-info { 
-            font-size: 0.75rem; 
-            color: #565959; 
-            margin-bottom: 6px; 
-            font-weight: 600; 
-        }
-
-        .price-box { 
-            margin: 6px 0; 
-            display: flex; 
-            align-items: baseline; 
-            gap: 4px; 
-        }
-
-        .currency-symbol { 
-            font-size: 0.75rem; 
-            font-weight: 700; 
-            vertical-align: super; 
-        }
-
-        .current-price { 
-            font-size: 1.35rem; 
-            font-weight: 700; 
-            color: var(--price-red); 
-        }
-
-        .old-price { 
-            font-size: 0.8rem; 
-            color: #565959; 
-            text-decoration: line-through; 
-            margin-right: 6px; 
-        }
-
-        .pickup-note { 
-            font-size: 0.75rem; 
-            color: #565959; 
-            font-weight: 600; 
-            margin-bottom: 10px; 
-        }
-
-        .btn-add-cart { 
-            background: var(--amz-yellow); 
-            border: 1px solid #fcd200; 
-            color: #0f1111; 
-            padding: 8px 12px; 
-            border-radius: 20px; 
-            font-weight: 700; 
-            cursor: pointer; 
-            width: 100%; 
-            font-size: 0.9rem; 
-            transition: background 0.2s; 
-            box-shadow: 0 2px 5px rgba(213,217,217,.5); 
-        }
-
-        .btn-add-cart:hover { 
-            background: var(--amz-yellow-hover); 
-        }
-
-        .modal-overlay { 
-            display: none; 
-            position: fixed; 
-            top: 0; 
-            left: 0; 
-            right: 0; 
-            bottom: 0; 
-            background: rgba(0,0,0,0.6); 
-            z-index: 2000; 
-            justify-content: center; 
-            align-items: center; 
-            padding: 15px; 
-        }
-
-        .cart-modal { 
-            background: white; 
-            width: 100%; 
-            max-width: 500px; 
-            border-radius: 8px; 
-            padding: 20px; 
-            max-height: 85vh; 
-            overflow-y: auto; 
-        }
-
-        .modal-header { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            border-bottom: 1px solid #ddd; 
-            padding-bottom: 10px; 
-            margin-bottom: 15px; 
-        }
-
-        .close-btn { 
-            background: none; 
-            border: none; 
-            font-size: 1.5rem; 
-            cursor: pointer; 
-            font-weight: bold; 
-        }
-
-        .cart-item { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            padding: 10px 0; 
-            border-bottom: 1px solid #eee; 
-        }
-
-        .remove-item { 
-            color: #cc0c39; 
-            background: none; 
-            border: none; 
-            cursor: pointer; 
-            font-weight: 700; 
-        }
-
-        .cart-total { 
-            font-size: 1.2rem; 
-            font-weight: 900; 
-            margin: 15px 0; 
-        }
-
-        .btn-whatsapp-order { 
-            background: #25d366; 
-            color: white; 
-            border: none; 
-            width: 100%; 
-            padding: 12px; 
-            border-radius: 8px; 
-            font-size: 1rem; 
-            font-weight: 700; 
-            cursor: pointer; 
-        }
-
-        .btn-whatsapp-order:hover { 
-            background: #1ebd59; 
-        }
-
-        footer { 
-            background: var(--amz-dark); 
-            color: #ddd; 
-            text-align: center; 
-            padding: 25px; 
-            margin-top: 40px; 
-        }
+        footer { background: var(--amz-dark); color: #ddd; text-align: center; padding: 25px; margin-top: 40px; }
     </style>
 </head>
 <body>
@@ -413,7 +94,7 @@
             </div>
         </a>
         <div class="search-bar">
-            <input type="text" id="searchInput" placeholder="ابحث عن استرز، شورت، جونت، تيشيرت..." onkeyup="filterProducts()">
+            <input type="text" id="searchInput" placeholder="ابحث عن استرز، تيشيرت، جونت، كرة..." onkeyup="filterProducts()">
             <button onclick="filterProducts()">🔍</button>
         </div>
         <button class="cart-btn" onclick="openCart()">🛒 عربة التسوق <span class="cart-count" id="cartCount">0</span></button>
@@ -430,7 +111,7 @@
 
     <section class="hero-banner">
         <h2>Goal Keeper Store</h2>
-        <p>معدات ومستلزمات كرة القدم الأصلية - اطلب عبر واتساب واستلم من المقر مباشرة.</p>
+        <p>معدات ومستلزمات كرة القدم الأصلية - احجز عبر واتساب واستلم من المعرض مباشرة.</p>
     </section>
 
     <div class="container">
@@ -445,26 +126,43 @@
             </div>
             <div id="cartItemsContainer"></div>
             <div class="cart-total" id="cartTotal">الإجمالي: 0 جنيه</div>
-            <button class="btn-whatsapp-order" onclick="checkoutWhatsApp()">💬 إتمام الطلب عبر واتساب</button>
+            <button class="btn-whatsapp-order" onclick="checkoutWhatsApp()">💬 إتمام الحجز عبر واتساب</button>
         </div>
     </div>
 
-    <footer>جميع الحقوق محفوظة © 2026 <strong>Goal Keeper Store</strong> | الحجز والطلب عبر واتساب ⚽</footer>
+    <footer>جميع الحقوق محفوظة © 2026 <strong>Goal Keeper Store</strong> | الحجز والاستلام المباشر ⚽</footer>
 
     <script>
         const products = [
+            // استرزات وأحذية (Boots)
             { id: 1, category: 'boots', name: 'حذاء كرة قدم نايكي ميركوريال برو للنجيل الصناعي', price: 1450.00, oldPrice: 1800.00, badge: 'الأكثر مبيعاً', rating: '★★★★☆', reviews: '142', sales: 'تم شراء 100+ سلعة مؤخراً', img: 'https://m.media-amazon.com/images/I/61y4K6+aXbL._AC_UL480_FMwebp_QL65_.jpg' },
             { id: 2, category: 'boots', name: 'حذاء كرة قدم أديداس إكس خفيف للسرعة', price: 1350.00, oldPrice: 1650.00, badge: '', rating: '★★★★★', reviews: '84', sales: 'تم شراء 50+ سلعة مؤخراً', img: 'https://m.media-amazon.com/images/I/71Y+m61l-5L._AC_UL480_FMwebp_QL65_.jpg' },
             { id: 3, category: 'boots', name: 'حذاء بوما ألترا ماتش للتدريبات والمباريات', price: 1200.00, oldPrice: 1500.00, badge: '', rating: '★★★★☆', reviews: '65', sales: 'تم شراء 70+ سلعة مؤخراً', img: 'https://m.media-amazon.com/images/I/61Yh2n973CL._AC_UL480_FMwebp_QL65_.jpg' },
-            { id: 4, category: 'kits', name: 'طقم نادي ريال مدريد الأساسي موسم جديد', price: 550.00, oldPrice: 700.00, badge: 'الأكثر مبيعاً', rating: '★★★★★', reviews: '215', sales: 'تم شراء 300+ سلعة مؤخراً', img: 'https://m.media-amazon.com/images/I/71yV8a36vPL._AC_UL480_FMwebp_QL65_.jpg' },
-            { id: 5, category: 'kits', name: 'طقم نادي برشلونة الأساسي خامة رياضية ممتازة', price: 550.00, oldPrice: 700.00, badge: '', rating: '★★★★★', reviews: '190', sales: 'تم شراء 200+ سلعة مؤخراً', img: 'https://m.media-amazon.com/images/I/61Yh2n973CL._AC_UL480_FMwebp_QL65_.jpg' },
-            { id: 6, category: 'kits', name: 'شورت رياضي كرة قدم رجالي سريع الجفاف', price: 180.00, oldPrice: 250.00, badge: '', rating: '★★★★☆', reviews: '95', sales: 'تم شراء 150+ سلعة مؤخراً', img: 'https://m.media-amazon.com/images/I/61NqKzJzWkL._AC_UL480_FMwebp_QL65_.jpg' },
-            { id: 7, category: 'gloves', name: 'قفازات حراسة مرمى أديداس بريداتور بلاتكس قوي', price: 950.00, oldPrice: 1200.00, badge: 'الأكثر مبيعاً', rating: '★★★★★', reviews: '98', sales: 'تم شراء 90+ سلعة مؤخراً', img: 'https://m.media-amazon.com/images/I/71b2V5q3L7L._AC_UL480_FMwebp_QL65_.jpg' },
-            { id: 8, category: 'gloves', name: 'قفازات حراسة مرمى مع دعامات لحماية الأصابع', price: 820.00, oldPrice: 1000.00, badge: '', rating: '★★★★☆', reviews: '63', sales: 'تم شراء 60+ سلعة مؤخراً', img: 'https://m.media-amazon.com/images/I/71lq1Wq8zLL._AC_UL480_FMwebp_QL65_.jpg' },
-            { id: 9, category: 'socks', name: 'شرابات رياضية مانعة للانزلاق لكرة القدم (Grip)', price: 120.00, oldPrice: 180.00, badge: 'عرض خاص', rating: '★★★★★', reviews: '320', sales: 'تم شراء 500+ سلعة مؤخراً', img: 'https://m.media-amazon.com/images/I/71h3J5w6XIL._AC_UL480_FMwebp_QL65_.jpg' },
-            { id: 10, category: 'socks', name: 'واقي ساق (شناكار) متين ومريح ضد الصدمات', price: 130.00, oldPrice: 170.00, badge: '', rating: '★★★★☆', reviews: '140', sales: 'تم شراء 120+ سلعة مؤخراً', img: 'https://m.media-amazon.com/images/I/61k2L4w9ZLL._AC_UL480_FMwebp_QL65_.jpg' },
-            { id: 11, category: 'balls', name: 'كرة قدم احترافية مقاس 5 خياطة حرارية متينة', price: 680.00, oldPrice: 850.00, badge: '', rating: '★★★★★', reviews: '76', sales: 'تم شراء 80+ سلعة مؤخراً', img: 'https://m.media-amazon.com/images/I/81x2Y7W7-CL._AC_UL480_FMwebp_QL65_.jpg' },
-            { id: 12, category: 'balls', name: 'كرة قدم للتدريبات والمباريات الرسمية', price: 750.00, oldPrice: 950.00, badge: 'الأكثر مبيعاً', rating: '★★★★★', reviews: '120', sales: 'تم شراء 180+ سلعة مؤخراً', img: 'https://m.media-amazon.com/images/I/81Lz3W9K+CL._AC_UL480_FMwebp_QL65_.jpg' }
+            { id: 4, category: 'boots', name: 'حذاء كرة قدم فانتوم إلتقاط سريع للنجيل الطبيعي', price: 1600.00, oldPrice: 1950.00, badge: 'عرض خاص', rating: '★★★★★', reviews: '110', sales: 'تم شراء 85+ سلعة مؤخراً', img: 'https://m.media-amazon.com/images/I/61y4K6+aXbL._AC_UL480_FMwebp_QL65_.jpg' },
+            { id: 5, category: 'boots', name: 'حذاء أديداس كوبا صبغة جلد أصلي للتحكم', price: 1550.00, oldPrice: 1850.00, badge: '', rating: '★★★★★', reviews: '95', sales: 'تم شراء 60+ سلعة مؤخراً', img: 'https://m.media-amazon.com/images/I/71Y+m61l-5L._AC_UL480_FMwebp_QL65_.jpg' },
+
+            // تيشيرتات وأطقم (Kits)
+            { id: 6, category: 'kits', name: 'طقم نادي ريال مدريد الأساسي موسم جديد', price: 550.00, oldPrice: 700.00, badge: 'الأكثر مبيعاً', rating: '★★★★★', reviews: '215', sales: 'تم شراء 300+ سلعة مؤخراً', img: 'https://m.media-amazon.com/images/I/71yV8a36vPL._AC_UL480_FMwebp_QL65_.jpg' },
+            { id: 7, category: 'kits', name: 'طقم نادي برشلونة الأساسي خامة رياضية ممتازة', price: 550.00, oldPrice: 700.00, badge: '', rating: '★★★★★', reviews: '190', sales: 'تم شراء 200+ سلعة مؤخراً', img: 'https://m.media-amazon.com/images/I/61Yh2n973CL._AC_UL480_FMwebp_QL65_.jpg' },
+            { id: 8, category: 'kits', name: 'طقم منتخب مصر الأول لكرة القدم الأساسي أحمر', price: 500.00, oldPrice: 650.00, badge: 'الأكثر مبيعاً', rating: '★★★★★', reviews: '340', sales: 'تم شراء 450+ سلعة مؤخراً', img: 'https://m.media-amazon.com/images/I/71yV8a36vPL._AC_UL480_FMwebp_QL65_.jpg' },
+            { id: 9, category: 'kits', name: 'شورت رياضي كرة قدم رجالي سريع الجفاف', price: 180.00, oldPrice: 250.00, badge: '', rating: '★★★★☆', reviews: '95', sales: 'تم شراء 150+ سلعة مؤخراً', img: 'https://m.media-amazon.com/images/I/61NqKzJzWkL._AC_UL480_FMwebp_QL65_.jpg' },
+            { id: 10, category: 'kits', name: 'تيشيرت تمرين سادة بوليستر عالي الجودة', price: 220.00, oldPrice: 300.00, badge: '', rating: '★★★★☆', reviews: '78', sales: 'تم شراء 130+ سلعة مؤخراً', img: 'https://m.media-amazon.com/images/I/61Yh2n973CL._AC_UL480_FMwebp_QL65_.jpg' },
+
+            // جونتات حراس (Gloves)
+            { id: 11, category: 'gloves', name: 'قفازات حراسة مرمى أديداس بريداتور بلاتكس قوي', price: 950.00, oldPrice: 1200.00, badge: 'الأكثر مبيعاً', rating: '★★★★★', reviews: '98', sales: 'تم شراء 90+ سلعة مؤخراً', img: 'https://m.media-amazon.com/images/I/71b2V5q3L7L._AC_UL480_FMwebp_QL65_.jpg' },
+            { id: 12, category: 'gloves', name: 'قفازات حراسة مرمى مع دعامات لحماية الأصابع', price: 820.00, oldPrice: 1000.00, badge: '', rating: '★★★★☆', reviews: '63', sales: 'تم شراء 60+ سلعة مؤخراً', img: 'https://m.media-amazon.com/images/I/71lq1Wq8zLL._AC_UL480_FMwebp_QL65_.jpg' },
+            { id: 13, category: 'gloves', name: 'قفازات حارس مرمى نايكي ماتش لاتكس مانع للانزلاق', price: 890.00, oldPrice: 1100.00, badge: 'عرض خاص', rating: '★★★★★', reviews: '74', sales: 'تم شراء 75+ سلعة مؤخراً', img: 'https://m.media-amazon.com/images/I/71b2V5q3L7L._AC_UL480_FMwebp_QL65_.jpg' },
+
+            // شرابات وشناكات (Socks & Guards)
+            { id: 14, category: 'socks', name: 'شرابات رياضية مانعة للانزلاق لكرة القدم (Grip)', price: 120.00, oldPrice: 180.00, badge: 'الأكثر مبيعاً', rating: '★★★★★', reviews: '320', sales: 'تم شراء 500+ سلعة مؤخراً', img: 'https://m.media-amazon.com/images/I/71h3J5w6XIL._AC_UL480_FMwebp_QL65_.jpg' },
+            { id: 15, category: 'socks', name: 'واقي ساق (شناكار) متين ومريح ضد الصدمات', price: 130.00, oldPrice: 170.00, badge: '', rating: '★★★★☆', reviews: '140', sales: 'تم شراء 120+ سلعة مؤخراً', img: 'https://m.media-amazon.com/images/I/61k2L4w9ZLL._AC_UL480_FMwebp_QL65_.jpg' },
+            { id: 16, category: 'socks', name: 'شرابات طويلة للتمارين موحدة اللون قطن وبوليستر', price: 75.00, oldPrice: 110.00, badge: '', rating: '★★★★☆', reviews: '210', sales: 'تم شراء 350+ سلعة مؤخراً', img: 'https://m.media-amazon.com/images/I/71h3J5w6XIL._AC_UL480_FMwebp_QL65_.jpg' },
+
+            // كور قدم (Balls)
+            { id: 17, category: 'balls', name: 'كرة قدم احترافية مقاس 5 خياطة حرارية متينة', price: 680.00, oldPrice: 850.00, badge: 'الأكثر مبيعاً', rating: '★★★★★', reviews: '76', sales: 'تم شراء 80+ سلعة مؤخراً', img: 'https://m.media-amazon.com/images/I/81x2Y7W7-CL._AC_UL480_FMwebp_QL65_.jpg' },
+            { id: 18, category: 'balls', name: 'كرة قدم أديداس الرسمية للتدريبات والمباريات', price: 750.00, oldPrice: 950.00, badge: 'عرض خاص', rating: '★★★★★', reviews: '120', sales: 'تم شراء 180+ سلعة مؤخراً', img: 'https://m.media-amazon.com/images/I/81Lz3W9K+CL._AC_UL480_FMwebp_QL65_.jpg' },
+            { id: 19, category: 'balls', name: 'كرة قدم نايكي فلايت للملاعب المفتوحة', price: 820.00, oldPrice: 1050.00, badge: '', rating: '★★★★★', reviews: '54', sales: 'تم شراء 65+ سلعة مؤخراً', img: 'https://m.media-amazon.com/images/I/81x2Y7W7-CL._AC_UL480_FMwebp_QL65_.jpg' },
+            { id: 20, category: 'balls', name: 'كرة قدم مصغرة للتدريب على المهارات الفردية', price: 350.00, oldPrice: 450.00, badge: '', rating: '★★★★☆', reviews: '88', sales: 'تم شراء 110+ سلعة مؤخراً', img: 'https://m.media-amazon.com/images/I/81Lz3W9K+CL._AC_UL480_FMwebp_QL65_.jpg' }
         ];
 
         const STORE_WHATSAPP = "201062962959";
@@ -499,7 +197,7 @@
                                 <span class="current-price">${p.price.toFixed(2)}</span>
                                 <span class="old-price">${p.oldPrice.toFixed(2)} ج.م</span>
                             </div>
-                            <div class="pickup-note">متاح الحجز والاستلام المباشر</div>
+                            <div class="pickup-note">متاح الحجز والاستلام المباشر من المعرض</div>
                             <button class="btn-add-cart" onclick="addToCart(${p.id})">إضافة إلى عربة التسوق</button>
                         </div>
                     </div>
@@ -508,13 +206,7 @@
         }
 
         function getCategoryName(cat) {
-            const names = { 
-                boots: 'استرزات وأحذية', 
-                kits: 'تيشيرتات وأطقم', 
-                gloves: 'جونتات حراس', 
-                socks: 'شرابات وشناكات', 
-                balls: 'كور قدم' 
-            };
+            const names = { boots: 'استرزات وأحذية', kits: 'تيشيرتات وأطقم', gloves: 'جونتات حراس', socks: 'شرابات وشناكات', balls: 'كور قدم' };
             return names[cat] || '';
         }
 
@@ -573,7 +265,7 @@
 
         function checkoutWhatsApp() {
             if (cart.length === 0) { alert('عربة التسوق فارغة!'); return; }
-            let message = "سلام عليكم، أريد حجز المنتجات التالية من متجر *Goal Keeper Store* (استلام مباشر):\n\n";
+            let message = "سلام عليكم، أريد حجز المنتجات التالية من متجر *Goal Keeper Store* (استلام مباشر من المعرض):\n\n";
             let total = 0;
             cart.forEach((item, i) => {
                 message += `${i + 1}- ${item.name} (${item.price.toFixed(2)} ج.م)\n`;
