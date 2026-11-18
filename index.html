@@ -15,7 +15,6 @@
             --amz-yellow-hover: #f7ca00;
             --bg-gray: #eaeded;
             --text-dark: #0f1111;
-            --green-badge: #007600;
             --price-red: #B12704;
         }
 
@@ -31,7 +30,6 @@
             color: var(--text-dark); 
         }
 
-        /* الهيدر العلوي */
         header { 
             background-color: var(--amz-dark); 
             color: white; 
@@ -75,7 +73,6 @@
             font-weight: 700; 
         }
 
-        /* شريط البحث */
         .search-bar { 
             flex: 1; 
             min-width: 260px; 
@@ -102,7 +99,6 @@
             font-weight: bold; 
         }
 
-        /* زر السلة */
         .cart-btn { 
             background: transparent; 
             border: 1px solid transparent; 
@@ -126,7 +122,6 @@
             font-size: 0.85rem; 
         }
 
-        /* شريط الأقسام الفرعي */
         .sub-nav { 
             background-color: var(--amz-nav); 
             padding: 8px 3%; 
@@ -153,7 +148,6 @@
             color: var(--amz-orange); 
         }
 
-        /* بانر الموقع */
         .hero-banner { 
             background: linear-gradient(to left, #0f172a, #1e293b); 
             color: white; 
@@ -174,7 +168,6 @@
             color: #e2e8f0; 
         }
 
-        /* شبكة المنتجات */
         .container { 
             max-width: 1300px; 
             margin: 20px auto; 
@@ -187,7 +180,6 @@
             gap: 15px; 
         }
 
-        /* كارت المنتج */
         .product-card { 
             background: white; 
             border-radius: 4px; 
@@ -298,21 +290,11 @@
             margin-right: 6px; 
         }
 
-        .prime-shipping { 
+        .pickup-note { 
             font-size: 0.75rem; 
-            color: #007600; 
-            font-weight: 700; 
+            color: #565959; 
+            font-weight: 600; 
             margin-bottom: 10px; 
-        }
-
-        .prime-tag { 
-            background: #00a8e1; 
-            color: white; 
-            padding: 1px 4px; 
-            border-radius: 2px; 
-            font-size: 0.65rem; 
-            font-weight: 900; 
-            margin-left: 4px; 
         }
 
         .btn-add-cart { 
@@ -333,7 +315,6 @@
             background: var(--amz-yellow-hover); 
         }
 
-        /* نافذة السلة (Modal) */
         .modal-overlay { 
             display: none; 
             position: fixed; 
@@ -432,7 +413,7 @@
             </div>
         </a>
         <div class="search-bar">
-            <input type="text" id="searchInput" placeholder="ابحث عن استرز، شورت، جونت، تيشيرت، شراب..." onkeyup="filterProducts()">
+            <input type="text" id="searchInput" placeholder="ابحث عن استرز، شورت، جونت، تيشيرت..." onkeyup="filterProducts()">
             <button onclick="filterProducts()">🔍</button>
         </div>
         <button class="cart-btn" onclick="openCart()">🛒 عربة التسوق <span class="cart-count" id="cartCount">0</span></button>
@@ -441,7 +422,7 @@
     <div class="sub-nav">
         <button class="cat-btn active" onclick="filterCategory('all', this)">الكل</button>
         <button class="cat-btn" onclick="filterCategory('boots', this)">👟 استرزات وأحذية</button>
-        <button class="cat-btn" onclick="filterCategory('kits', this)">👕 تيشيرتات وأطقم وشورطات</button>
+        <button class="cat-btn" onclick="filterCategory('kits', this)">👕 تيشيرتات وأطقم</button>
         <button class="cat-btn" onclick="filterCategory('gloves', this)">🧤 جونتات حراس</button>
         <button class="cat-btn" onclick="filterCategory('socks', this)">🧦 شرابات وشناكات</button>
         <button class="cat-btn" onclick="filterCategory('balls', this)">⚽ كور قدم</button>
@@ -449,7 +430,7 @@
 
     <section class="hero-banner">
         <h2>Goal Keeper Store</h2>
-        <p>تشكيلة أمازون الحصرية لأقوى الأحذية، التيشيرتات، الشورطات، الشرابات والجونتات الأصلية.</p>
+        <p>معدات ومستلزمات كرة القدم الأصلية - اطلب عبر واتساب واستلم من المقر مباشرة.</p>
     </section>
 
     <div class="container">
@@ -468,22 +449,22 @@
         </div>
     </div>
 
-    <footer>جميع الحقوق محفوظة © 2026 <strong>Goal Keeper Store</strong> | شحن لجميع المحافظات 🚚</footer>
+    <footer>جميع الحقوق محفوظة © 2026 <strong>Goal Keeper Store</strong> | الحجز والطلب عبر واتساب ⚽</footer>
 
     <script>
         const products = [
-            { id: 1, category: 'boots', name: 'حذاء كرة قدم (استرز) نايكي ميركوريال برو للنجيل والتريتان', price: 1450.00, oldPrice: 1800.00, badge: 'الأكثر مبيعاً', rating: '★★★★☆', reviews: '142', sales: 'تم شراء 100+ سلعة في الشهر الماضي', img: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&q=80' },
-            { id: 2, category: 'boots', name: 'استرز أديداس إكس كريزي فاست خفيف الوزن للسرعة القصوى', price: 1350.00, oldPrice: 1650.00, badge: '', rating: '★★★★★', reviews: '84', sales: 'تم شراء 50+ سلعة في الشهر الماضي', img: 'https://images.unsplash.com/photo-1608231387042-66d17b3070a1?w=500&q=80' },
-            { id: 3, category: 'boots', name: 'استرز بوما ألترا ماتش للنجيل الصناعي والطبيعي', price: 1200.00, oldPrice: 1500.00, badge: '', rating: '★★★★☆', reviews: '65', sales: 'تم شراء 70+ سلعة في الشهر الماضي', img: 'https://images.unsplash.com/photo-1515955656352-a1fa3ffcd111?w=500&q=80' },
-            { id: 4, category: 'kits', name: 'طقم ريال مدريد الأساسي 2026 (تيشيرت + شورت مايكرو أصلي)', price: 550.00, oldPrice: 700.00, badge: 'الأكثر مبيعاً', rating: '★★★★★', reviews: '215', sales: 'تم شراء 300+ سلعة في الشهر الماضي', img: 'https://images.unsplash.com/photo-1518063319789-7217ed6e2978?w=500&q=80' },
-            { id: 5, category: 'kits', name: 'طقم برشلونة الأساسي الجديد (تيشيرت + شورت عالي الجودة)', price: 550.00, oldPrice: 700.00, badge: '', rating: '★★★★★', reviews: '190', sales: 'تم شراء 200+ سلعة في الشهر الماضي', img: 'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=500&q=80' },
-            { id: 6, category: 'kits', name: 'شورت كرة قدم منفصل خامة رياضية سريعة الجفاف', price: 180.00, oldPrice: 250.00, badge: '', rating: '★★★★☆', reviews: '95', sales: 'تم شراء 150+ سلعة في الشهر الماضي', img: 'https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=500&q=80' },
-            { id: 7, category: 'gloves', name: 'جونت حارس مرمى أديداس بريداتور بـ لاتكس ألماني أصلي', price: 950.00, oldPrice: 1200.00, badge: 'الأكثر مبيعاً', rating: '★★★★★', reviews: '98', sales: 'تم شراء 90+ سلعة في الشهر الماضي', img: 'https://images.unsplash.com/photo-1565992441121-4367c2967103?w=500&q=80' },
-            { id: 8, category: 'gloves', name: 'جونت حارس مرمى بوما ألترا مع حماية قوية للأصابع', price: 820.00, oldPrice: 1000.00, badge: '', rating: '★★★★☆', reviews: '63', sales: 'تم شراء 60+ سلعة في الشهر الماضي', img: 'https://images.unsplash.com/photo-1617693593478-19e3441b8086?w=500&q=80' },
-            { id: 9, category: 'socks', name: 'شراب كورة مانع للانزلاق (Grip Socks) جودة عالية', price: 120.00, oldPrice: 180.00, badge: 'عرض خاص', rating: '★★★★★', reviews: '320', sales: 'تم شراء 500+ سلعة في الشهر الماضي', img: 'https://images.unsplash.com/photo-1586350977771-b3b0abd50c82?w=500&q=80' },
-            { id: 10, category: 'socks', name: 'شناكار حماية ساق (Shin Guards) خفيف ومتين ضد الصدمات', price: 130.00, oldPrice: 170.00, badge: '', rating: '★★★★☆', reviews: '140', sales: 'تم شراء 120+ سلعة في الشهر الماضي', img: 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=500&q=80' },
-            { id: 11, category: 'balls', name: 'كرة قدم احترافية مقاس 5 (خياطة حرارية ضد المياه)', price: 680.00, oldPrice: 850.00, badge: '', rating: '★★★★★', reviews: '76', sales: 'تم شراء 80+ سلعة في الشهر الماضي', img: 'https://images.unsplash.com/photo-1614632537456-78687b1d7159?w=500&q=80' },
-            { id: 12, category: 'balls', name: 'كرة قدم أبطال أوروبا التدريبية الرسمية مقاس 5', price: 750.00, oldPrice: 950.00, badge: 'الأكثر مبيعاً', rating: '★★★★★', reviews: '120', sales: 'تم شراء 180+ سلعة في الشهر الماضي', img: 'https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=500&q=80' }
+            { id: 1, category: 'boots', name: 'حذاء كرة قدم نايكي ميركوريال برو للنجيل الصناعي', price: 1450.00, oldPrice: 1800.00, badge: 'الأكثر مبيعاً', rating: '★★★★☆', reviews: '142', sales: 'تم شراء 100+ سلعة مؤخراً', img: 'https://m.media-amazon.com/images/I/61y4K6+aXbL._AC_UL480_FMwebp_QL65_.jpg' },
+            { id: 2, category: 'boots', name: 'حذاء كرة قدم أديداس إكس خفيف للسرعة', price: 1350.00, oldPrice: 1650.00, badge: '', rating: '★★★★★', reviews: '84', sales: 'تم شراء 50+ سلعة مؤخراً', img: 'https://m.media-amazon.com/images/I/71Y+m61l-5L._AC_UL480_FMwebp_QL65_.jpg' },
+            { id: 3, category: 'boots', name: 'حذاء بوما ألترا ماتش للتدريبات والمباريات', price: 1200.00, oldPrice: 1500.00, badge: '', rating: '★★★★☆', reviews: '65', sales: 'تم شراء 70+ سلعة مؤخراً', img: 'https://m.media-amazon.com/images/I/61Yh2n973CL._AC_UL480_FMwebp_QL65_.jpg' },
+            { id: 4, category: 'kits', name: 'طقم نادي ريال مدريد الأساسي موسم جديد', price: 550.00, oldPrice: 700.00, badge: 'الأكثر مبيعاً', rating: '★★★★★', reviews: '215', sales: 'تم شراء 300+ سلعة مؤخراً', img: 'https://m.media-amazon.com/images/I/71yV8a36vPL._AC_UL480_FMwebp_QL65_.jpg' },
+            { id: 5, category: 'kits', name: 'طقم نادي برشلونة الأساسي خامة رياضية ممتازة', price: 550.00, oldPrice: 700.00, badge: '', rating: '★★★★★', reviews: '190', sales: 'تم شراء 200+ سلعة مؤخراً', img: 'https://m.media-amazon.com/images/I/61Yh2n973CL._AC_UL480_FMwebp_QL65_.jpg' },
+            { id: 6, category: 'kits', name: 'شورت رياضي كرة قدم رجالي سريع الجفاف', price: 180.00, oldPrice: 250.00, badge: '', rating: '★★★★☆', reviews: '95', sales: 'تم شراء 150+ سلعة مؤخراً', img: 'https://m.media-amazon.com/images/I/61NqKzJzWkL._AC_UL480_FMwebp_QL65_.jpg' },
+            { id: 7, category: 'gloves', name: 'قفازات حراسة مرمى أديداس بريداتور بلاتكس قوي', price: 950.00, oldPrice: 1200.00, badge: 'الأكثر مبيعاً', rating: '★★★★★', reviews: '98', sales: 'تم شراء 90+ سلعة مؤخراً', img: 'https://m.media-amazon.com/images/I/71b2V5q3L7L._AC_UL480_FMwebp_QL65_.jpg' },
+            { id: 8, category: 'gloves', name: 'قفازات حراسة مرمى مع دعامات لحماية الأصابع', price: 820.00, oldPrice: 1000.00, badge: '', rating: '★★★★☆', reviews: '63', sales: 'تم شراء 60+ سلعة مؤخراً', img: 'https://m.media-amazon.com/images/I/71lq1Wq8zLL._AC_UL480_FMwebp_QL65_.jpg' },
+            { id: 9, category: 'socks', name: 'شرابات رياضية مانعة للانزلاق لكرة القدم (Grip)', price: 120.00, oldPrice: 180.00, badge: 'عرض خاص', rating: '★★★★★', reviews: '320', sales: 'تم شراء 500+ سلعة مؤخراً', img: 'https://m.media-amazon.com/images/I/71h3J5w6XIL._AC_UL480_FMwebp_QL65_.jpg' },
+            { id: 10, category: 'socks', name: 'واقي ساق (شناكار) متين ومريح ضد الصدمات', price: 130.00, oldPrice: 170.00, badge: '', rating: '★★★★☆', reviews: '140', sales: 'تم شراء 120+ سلعة مؤخراً', img: 'https://m.media-amazon.com/images/I/61k2L4w9ZLL._AC_UL480_FMwebp_QL65_.jpg' },
+            { id: 11, category: 'balls', name: 'كرة قدم احترافية مقاس 5 خياطة حرارية متينة', price: 680.00, oldPrice: 850.00, badge: '', rating: '★★★★★', reviews: '76', sales: 'تم شراء 80+ سلعة مؤخراً', img: 'https://m.media-amazon.com/images/I/81x2Y7W7-CL._AC_UL480_FMwebp_QL65_.jpg' },
+            { id: 12, category: 'balls', name: 'كرة قدم للتدريبات والمباريات الرسمية', price: 750.00, oldPrice: 950.00, badge: 'الأكثر مبيعاً', rating: '★★★★★', reviews: '120', sales: 'تم شراء 180+ سلعة مؤخراً', img: 'https://m.media-amazon.com/images/I/81Lz3W9K+CL._AC_UL480_FMwebp_QL65_.jpg' }
         ];
 
         const STORE_WHATSAPP = "201062962959";
@@ -518,7 +499,7 @@
                                 <span class="current-price">${p.price.toFixed(2)}</span>
                                 <span class="old-price">${p.oldPrice.toFixed(2)} ج.م</span>
                             </div>
-                            <div class="prime-shipping">توصيل مجاني <span class="prime-tag">prime</span></div>
+                            <div class="pickup-note">متاح الحجز والاستلام المباشر</div>
                             <button class="btn-add-cart" onclick="addToCart(${p.id})">إضافة إلى عربة التسوق</button>
                         </div>
                     </div>
@@ -529,10 +510,10 @@
         function getCategoryName(cat) {
             const names = { 
                 boots: 'استرزات وأحذية', 
-                kits: 'تيشيرتات وأطقم وشورطات', 
+                kits: 'تيشيرتات وأطقم', 
                 gloves: 'جونتات حراس', 
                 socks: 'شرابات وشناكات', 
-                balls: 'كور قدم احترافية' 
+                balls: 'كور قدم' 
             };
             return names[cat] || '';
         }
@@ -592,7 +573,7 @@
 
         function checkoutWhatsApp() {
             if (cart.length === 0) { alert('عربة التسوق فارغة!'); return; }
-            let message = "سلام عليكم، أريد طلب المنتجات التالية من متجر *Goal Keeper Store*:\n\n";
+            let message = "سلام عليكم، أريد حجز المنتجات التالية من متجر *Goal Keeper Store* (استلام مباشر):\n\n";
             let total = 0;
             cart.forEach((item, i) => {
                 message += `${i + 1}- ${item.name} (${item.price.toFixed(2)} ج.م)\n`;
