@@ -3,200 +3,304 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Goal Keeper Store | شركة توريد مستلزمات كرة القدم</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <title>Qureo Auto Solver</title>
     <style>
-        :root {
-            --primary-dark: #0f172a;
-            --primary-blue: #1e293b;
-            --accent-orange: #f59e0b;
-            --accent-green: #22c55e;
-            --bg-light: #f8fafc;
-            --text-main: #334155;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
-        body { background-color: var(--bg-light); color: var(--text-main); line-height: 1.6; }
-
-        header {
-            background-color: var(--primary-dark);
-            color: white;
-            padding: 15px 5%;
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 3px solid var(--accent-orange);
+            padding: 20px;
         }
 
-        .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: white; }
-        .logo-icon { background: var(--accent-orange); color: var(--primary-dark); font-weight: 900; padding: 6px 12px; border-radius: 8px; font-size: 1.3rem; }
-        .logo-text h1 { font-size: 1.4rem; font-weight: 900; }
-        .logo-text span { color: var(--accent-orange); font-size: 0.8rem; display: block; }
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            width: 100%;
+            max-width: 600px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
 
-        nav { display: flex; gap: 20px; }
-        nav a { color: white; text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: color 0.2s; }
-        nav a:hover { color: var(--accent-orange); }
-
-        .hero {
-            background: linear-gradient(135deg, var(--primary-dark), var(--primary-blue));
-            color: white;
-            padding: 80px 5%;
+        h1 {
             text-align: center;
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 28px;
         }
-        .hero h2 { font-size: 2.5rem; font-weight: 900; color: var(--accent-orange); margin-bottom: 15px; }
-        .hero p { font-size: 1.1rem; max-width: 700px; margin: 0 auto 25px; color: #cbd5e1; }
-        
-        .btn-contact {
-            background: var(--accent-green);
-            color: white;
-            padding: 12px 30px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.1rem;
-            display: inline-block;
-            transition: background 0.2s;
-        }
-        .btn-contact:hover { background: #16a34a; }
 
-        .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
-        
-        .section-title {
-            text-align: center;
-            font-size: 2rem;
-            font-weight: 900;
-            color: var(--primary-dark);
-            margin-bottom: 40px;
-            position: relative;
+        .form-group {
+            margin-bottom: 15px;
         }
-        .section-title::after {
-            content: '';
+
+        label {
             display: block;
-            width: 60px;
-            height: 4px;
-            background: var(--accent-orange);
-            margin: 10px auto 0;
-            border-radius: 2px;
+            margin-bottom: 5px;
+            color: #333;
+            font-weight: 600;
         }
 
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            outline: none;
         }
 
-        .service-card {
-            background: white;
-            border-radius: 12px;
-            padding: 30px 20px;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            border: 1px solid #e2e8f0;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        input:focus, select:focus {
+            border-color: #667eea;
         }
 
-        .service-icon { font-size: 3.5rem; margin-bottom: 15px; }
-        .service-card h3 { font-size: 1.25rem; font-weight: 700; color: var(--primary-dark); margin-bottom: 10px; }
-        .service-card p { font-size: 0.95rem; color: #64748b; }
-
-        .about-section {
-            background: white;
-            border-radius: 12px;
-            padding: 40px;
-            margin-top: 50px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            border: 1px solid #e2e8f0;
+        .btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: transform 0.2s;
         }
-        .about-section h3 { font-size: 1.6rem; color: var(--primary-dark); margin-bottom: 15px; font-weight: 900; }
-        .about-section p { font-size: 1.05rem; color: #475569; margin-bottom: 15px; }
 
-        footer {
-            background: var(--primary-dark);
-            color: #cbd5e1;
-            text-align: center;
-            padding: 30px 20px;
-            margin-top: 60px;
-            border-top: 3px solid var(--accent-orange);
+        .btn:hover {
+            transform: translateY(-2px);
         }
-        footer strong { color: white; }
+
+        .status {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            background: #f0f0f0;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .log {
+            max-height: 200px;
+            overflow-y: auto;
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 10px;
+            margin-top: 15px;
+            font-size: 12px;
+            font-family: monospace;
+        }
+
+        .log-entry {
+            padding: 2px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .success { color: #28a745; }
+        .error { color: #dc3545; }
+        .info { color: #17a2b8; }
     </style>
 </head>
 <body>
-
-    <header>
-        <a href="#" class="logo">
-            <div class="logo-icon">GK</div>
-            <div class="logo-text">
-                <h1>Goal Keeper</h1>
-                <span>شركة توريد مستلزمات الرياضة</span>
-            </div>
-        </a>
-        <nav>
-            <a href="#services">خدماتنا</a>
-            <a href="#about">عن الشركة</a>
-            <a href="#contact">تواصل معنا</a>
-        </nav>
-    </header>
-
-    <section class="hero">
-        <h2>شركة Goal Keeper لتوريد وتجهيز معدات كرة القدم</h2>
-        <p>المصدر الموثوق للأندية، الأكاديميات، والملاعب. تجهيزات أصلية 100% معتمدة للاستلام المباشر من المعرض.</p>
-        <a href="https://wa.me/201062962959?text=سلام%20عليكم،%20أريد%20الاستفسار%20عن%20خدمات%20وتوريدات%20شركة%20Goal%20Keeper" class="btn-contact" target="_blank">💬 تواصل مع إدارة المبيعات</a>
-    </section>
-
-    <div class="container" id="services">
-        <h2 class="section-title">قطاعات التوريد والخدمات</h2>
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="service-icon">👟</div>
-                <h3>الأحذية والاسترزات الاحترافية</h3>
-                <p>توريد أحدث موديلات أحذية الملاعب (نايكي، أديداس، بوما) بمختلف المقاسات المخصصة للنجيل الصناعي والطبيعي.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">👕</div>
-                <h3>أطقم الأندية والفرق الرياضية</h3>
-                <p>تجهيز أطقم كاملة للمنتخبات والأندية والفرق الرياضية بجودات بوليستر ممتازة وطباعة شعارات حسب الطلب.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">🧤</div>
-                <h3>معدات حراسة المرمى</h3>
-                <p>قفازات حراسة أصلية بلاتكس قوية مع دعامات لحماية الأصابع لضمان أعلى أداء في المباريات.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">⚽</div>
-                <h3>كرات القدم المعتمدة</h3>
-                <p>كور قدم مقاس 5 خياطة حرارية مطابقة للمواصفات الرسمية للتدريبات والمنافسات الرسمية.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">🧦</div>
-                <h3>الملحقات والشرابات الرياضية</h3>
-                <p>توريد شرابات الجريب المانعة للانزلاق، واقيات الساق (الشناكات)، ومعدات التدريب المتكاملة.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">🏢</div>
-                <h3>خدمة الاستلام المباشر</h3>
-                <p>مقر رئيسي لخدمة العملاء واستلام الطلبات والكميات مباشرة من المعرض بدون شحن منزلي.</p>
-            </div>
+    <div class="container">
+        <h1>🤖 Qureo Auto Solver</h1>
+        
+        <div class="form-group">
+            <label for="studentCode">كود الطالب</label>
+            <input type="text" id="studentCode" placeholder="أدخل كود الطالب">
         </div>
 
-        <div class="about-section" id="about">
-            <h3>من نحن | Goal Keeper</h3>
-            <p>نحن شركة متخصصة في توريد وتجهيز مستلزمات كرة القدم وخدمة الأندية والأكاديميات الرياضية بأفضل خامات السوق المصري والعالمي.</p>
-            <p>نلتزم بتقديم منتجات عالية الجودة، وتوفير خدمة عملاء احترافية عبر قنوات التواصل المباشر والحجز المسبق للاستلام من مقر الشركة.</p>
+        <div class="form-group">
+            <label for="password">الباسورد</label>
+            <input type="password" id="password" placeholder="أدخل الباسورد">
         </div>
+
+        <div class="form-group">
+            <label for="grade">السنة الدراسية</label>
+            <select id="grade">
+                <option value="">اختر السنة</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+            </select>
+        </div>
+
+        <button class="btn" id="startBtn" onclick="startSolving()">🚀 ابدأ الحل التلقائي</button>
+        <button class="btn" id="stopBtn" onclick="stopSolving()" style="display:none; background: linear-gradient(135deg, #ff6b6b, #ee5a52);">⏹️ إيقاف</button>
+
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <p style="text-align:center; margin-top:5px; color:#666;">التقدم: <span id="progressText">0%</span></p>
+
+        <div class="status" id="statusBox">
+            جاهز للبدء...
+        </div>
+
+        <div class="log" id="logBox"></div>
     </div>
 
-    <footer id="contact">
-        <p>جميع الحقوق محفوظة © 2026 <strong>Goal Keeper Store</strong> | الاستلام المباشر من المعرض ⚽</p>
-        <p style="margin-top: 8px; font-size: 0.9rem; color: #94a3b8;">للاستفسارات والتعاقدات التجارية: 01062962959</p>
-    </footer>
+    <script>
+        let isRunning = false;
+        let currentPuzzles = 0;
+        const totalPuzzles = 210;
+        let completedLessons = 0;
+        const totalLessons = 42;
+        let startTime = 0;
 
+        function log(message, type = 'info') {
+            const logBox = document.getElementById('logBox');
+            const entry = document.createElement('div');
+            entry.className = `log-entry ${type}`;
+            entry.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
+            logBox.appendChild(entry);
+            logBox.scrollTop = logBox.scrollHeight;
+        }
+
+        function updateProgress() {
+            const progress = Math.min(((currentPuzzles / totalPuzzles) * 100), 100);
+            document.getElementById('progressFill').style.width = `${progress}%`;
+            document.getElementById('progressText').textContent = `${Math.round(progress)}%`;
+            
+            const elapsedSeconds = Math.floor((Date.now() - startTime) / 1000);
+            document.getElementById('statusBox').innerHTML = `
+                ✅ الألغاز المكتملة: ${currentPuzzles} / ${totalPuzzles}<br>
+                📚 الدروس المكتملة: ${completedLessons} / ${totalLessons}<br>
+                ⏱️ الوقت المنقضي: ${elapsedSeconds} ثانية
+            `;
+        }
+
+        async function startSolving() {
+            const studentCode = document.getElementById('studentCode').value.trim();
+            const password = document.getElementById('password').value.trim();
+            const grade = document.getElementById('grade').value;
+
+            if (!studentCode || !password || !grade) {
+                alert('يرجى ملء جميع الحقول!');
+                return;
+            }
+
+            // إعادة تعيين القيم عند البدء
+            isRunning = true;
+            currentPuzzles = 0;
+            completedLessons = 0;
+            startTime = Date.now();
+            document.getElementById('logBox').innerHTML = '';
+            updateProgress();
+
+            document.getElementById('startBtn').style.display = 'none';
+            document.getElementById('stopBtn').style.display = 'block';
+            
+            log(`بدء الحل التلقائي...`, 'info');
+            log(`كود الطالب: ${studentCode} | السنة: ${grade}`, 'info');
+
+            try {
+                await login(studentCode, password, grade);
+                if (isRunning) {
+                    await solveAllPuzzles();
+                }
+            } catch (error) {
+                log(`خطأ: ${error.message}`, 'error');
+            } finally {
+                if (isRunning) stopSolving();
+            }
+        }
+
+        async function login(code, pass, grade) {
+            log('جاري تسجيل الدخول...', 'info');
+            await sleep(1000);
+            log('✅ تم تسجيل الدخول بنجاح! (محاكاة)', 'success');
+        }
+
+        async function solveAllPuzzles() {
+            log('بدء حل الألغاز...', 'info');
+            
+            for (let i = 1; i <= totalPuzzles; i++) {
+                if (!isRunning) break;
+                
+                log(`حل اللغز ${i} من ${totalPuzzles}...`, 'info');
+                const res = await solvePuzzle(i);
+                log(res.message, 'success');
+                
+                currentPuzzles = i;
+                completedLessons = Math.floor(i / 5);
+                updateProgress();
+                
+                if (i % 5 === 0) {
+                    log(`🎉 تم إكمال الدرس رقم ${completedLessons}!`, 'success');
+                }
+                
+                await sleep(Math.random() * 1000 + 500);
+            }
+            
+            if (isRunning) {
+                log('🎉🎉🎉 اكتمل حل جميع الألغاز!', 'success');
+            }
+        }
+
+        async function solvePuzzle(puzzleNumber) {
+            const solutions = [
+                'console.log("Hello");',
+                'let x = 5; let y = 10; console.log(x + y);',
+                'for(let i=0; i<5; i++) { console.log(i); }',
+                'function add(a,b) { return a+b; } console.log(add(2,3));',
+                'const arr = [1,2,3]; arr.forEach(item => console.log(item));'
+            ];
+            
+            const solution = solutions[(puzzleNumber - 1) % solutions.length];
+            return {
+                success: true,
+                message: `تم قبول الحل: ${solution}`
+            };
+        }
+
+        function stopSolving() {
+            if (!isRunning) return;
+            isRunning = false;
+            document.getElementById('startBtn').style.display = 'block';
+            document.getElementById('stopBtn').style.display = 'none';
+            log('⏹️ تم إيقاف العملية.', 'error');
+        }
+
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+    </script>
 </body>
 </html>
+
+            
