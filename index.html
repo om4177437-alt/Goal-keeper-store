@@ -1,306 +1,296 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Qureo Auto Solver</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>كيريو سولفر | QureoSolver — حل منصة كيريو وسبريكس 210 ماسة</title>
+  <!-- Primary Meta Tags -->
+  <meta name="title" content="كيريو سولفر | QureoSolver — حل منصة كيريو وسبريكس 210 ماسة">
+  <meta name="description" content="حل منصة كيريو (QUREO / QUERO / كوريو) وسبريكس (SPRIX) لطلاب أولى وثانية ثانوي. حل فوري أونلاين وبوت تليجرام بضمان 210 ماسة كاملة — مجاناً بالكامل بواسطة إسلام محمود!">
+  <meta name="keywords" content="كيريو سولفر, qureo solver, quero solver, solver, حل منصة كيريو, حل كيريو, حلول كيريو, حل منصة كوريو, حل منصة سبريكس, sprix solver, كيريو اولى ثانوي, كيريو تانية ثانوي, حل اسئلة منصة كيريو, حل كيريو جافاسكريبت, حل كيريو بايثون, حل سبريكس ثقافة مالية, بوت حل كيريو تليجرام, كيريو 210 ماسة, تطبيق سولفر, qureo eg">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#0b0f19">
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://querosolver.xyz/">
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/svg+xml" href="/images/logo.svg">
+  <!-- Open Graph / Facebook / WhatsApp -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://querosolver.xyz/">
+  <meta property="og:site_name" content="QureoSolver">
+  <meta property="og:title" content="كيريو سولفر | QureoSolver — حل منصة كيريو وسبريكس 210 ماسة">
+  <meta property="og:description" content="حل منصة كيريو (QUREO / QUERO / كوريو) وسبريكس (SPRIX) لطلاب أولى وثانية ثانوي. حل فوري أونلاين وبوت تليجرام بضمان 210 ماسة كاملة — مجاناً بالكامل!">
+  <meta property="og:image" content="https://querosolver.xyz/images/og-preview.png">
+  <meta property="og:locale" content="ar_EG">
+  <!-- Google Fonts: Cairo -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            cairo: ['Cairo', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          },
+          colors: {
+            brand: {
+              dark: '#080c14',
+              surface: '#0f172a',
+              card: '#1e293b',
+              border: '#334155',
+              emerald: '#10b981',
+              blue: '#3b82f6',
+              purple: '#8b5cf6',
+              rose: '#f43f5e',
+              gold: '#fbbf24'
+            }
+          }
         }
-
-        body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .container {
-            background: white;
-            border-radius: 20px;
-            padding: 30px;
-            width: 100%;
-            max-width: 600px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-        }
-
-        h1 {
-            text-align: center;
-            color: #667eea;
-            margin-bottom: 20px;
-            font-size: 28px;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 5px;
-            color: #333;
-            font-weight: 600;
-        }
-
-        input, select {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            font-size: 14px;
-            outline: none;
-        }
-
-        input:focus, select:focus {
-            border-color: #667eea;
-        }
-
-        .btn {
-            width: 100%;
-            padding: 14px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 10px;
-            transition: transform 0.2s;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-        }
-
-        .status {
-            margin-top: 20px;
-            padding: 15px;
-            border-radius: 8px;
-            background: #f0f0f0;
-            font-size: 14px;
-            line-height: 1.6;
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 20px;
-            background: #e0e0e0;
-            border-radius: 10px;
-            overflow: hidden;
-            margin-top: 10px;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #667eea, #764ba2);
-            width: 0%;
-            transition: width 0.3s ease;
-        }
-
-        .log {
-            max-height: 200px;
-            overflow-y: auto;
-            background: #f8f9fa;
-            border: 1px solid #dee2e6;
-            border-radius: 8px;
-            padding: 10px;
-            margin-top: 15px;
-            font-size: 12px;
-            font-family: monospace;
-        }
-
-        .log-entry {
-            padding: 2px 0;
-            border-bottom: 1px solid #eee;
-        }
-
-        .success { color: #28a745; }
-        .error { color: #dc3545; }
-        .info { color: #17a2b8; }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>🤖 Qureo Auto Solver</h1>
-        
-        <div class="form-group">
-            <label for="studentCode">كود الطالب</label>
-            <input type="text" id="studentCode" placeholder="أدخل كود الطالب">
-        </div>
-
-        <div class="form-group">
-            <label for="password">الباسورد</label>
-            <input type="password" id="password" placeholder="أدخل الباسورد">
-        </div>
-
-        <div class="form-group">
-            <label for="grade">السنة الدراسية</label>
-            <select id="grade">
-                <option value="">اختر السنة</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-                <option value="11">11</option>
-                <option value="12">12</option>
-            </select>
-        </div>
-
-        <button class="btn" id="startBtn" onclick="startSolving()">🚀 ابدأ الحل التلقائي</button>
-        <button class="btn" id="stopBtn" onclick="stopSolving()" style="display:none; background: linear-gradient(135deg, #ff6b6b, #ee5a52);">⏹️ إيقاف</button>
-
-        <div class="progress-bar">
-            <div class="progress-fill" id="progressFill"></div>
-        </div>
-        <p style="text-align:center; margin-top:5px; color:#666;">التقدم: <span id="progressText">0%</span></p>
-
-        <div class="status" id="statusBox">
-            جاهز للبدء...
-        </div>
-
-        <div class="log" id="logBox"></div>
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="/css/style.css?v=1795198209554">
+ </head>
+ <body class="bg-brand-dark text-slate-100 font-cairo antialiased min-h-screen flex flex-col selection:bg-brand-blue selection:text-white">
+  <!-- Navigation Bar -->
+  <header class="sticky top-0 z-50 backdrop-blur-md bg-brand-surface/85 border-b border-brand-border/60 transition-all">
+   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+    <!-- Brand Logo -->
+    <a href="/" class="flex items-center gap-2.5 group"> 
+     <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-blue/30 via-brand-purple/20 to-brand-emerald/30 border border-slate-700/80 flex items-center justify-center shadow-lg shadow-brand-blue/10 group-hover:scale-105 transition-transform p-1.5">
+      <img src="/images/logo.svg" alt="QureoSolver" class="w-full h-full drop-shadow-md">
+     </div> 
+     <div>
+      <div class="flex items-center gap-2">
+       <span class="font-extrabold text-base md:text-xl tracking-tight text-white group-hover:text-brand-blue transition-colors"> Qureo<span class="text-brand-emerald">Solver</span> </span> <span class="bg-brand-card text-emerald-400 border border-emerald-500/30 text-[9px] md:text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider"> 210 💎 </span>
+      </div>
+      <div class="text-[9px] md:text-[10px] text-slate-400 font-medium truncate max-w-[170px] sm:max-w-none">إشراف وتطوير: إسلام محمود</div>
+     </div> 
+    </a> 
+    <!-- Navigation Links & Action Buttons -->
+    <div class="flex items-center gap-3 md:gap-6">
+     <nav aria-label="Main Navigation" class="hidden sm:flex items-center gap-4 md:gap-6">
+      <a href="/qureo-solutions" class="inline-flex items-center gap-1.5 text-xs md:text-sm font-semibold text-slate-300 hover:text-emerald-400 transition-colors"><span>حل كيريو</span></a> 
+      <a href="/sprix-solutions" class="inline-flex items-center gap-1.5 text-xs md:text-sm font-semibold text-slate-300 hover:text-amber-400 transition-colors"><span>حل سبريكس</span></a> 
+      <a href="/portal" class="inline-flex items-center gap-1.5 text-xs md:text-sm font-semibold text-slate-300 hover:text-white transition-colors"><span>لوحة الطالب</span></a> 
+      <a href="#faq" class="inline-flex items-center gap-1.5 text-xs md:text-sm font-semibold text-slate-300 hover:text-white transition-colors"><span>الأسئلة الشائعة</span></a>
+     </nav>
+     <!-- Official Telegram Bot Button -->
+     <a href="https://t.me/querosolverbot" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-sky-500/10 hover:bg-sky-500/20 border border-sky-500/30 text-sky-300 hover:text-white text-xs font-bold transition-all shadow-sm group"> 
+      <svg class="w-4 h-4 fill-current text-sky-400 group-hover:scale-110 transition-transform" viewBox="0 0 24 24">
+       <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z" />
+      </svg> 
+      <span class="hidden sm:inline">البوت:</span> <span class="text-sky-200">@querosolverbot</span> 
+     </a> 
+     <!-- CTA Start Solving Button -->
+     <a href="/portal" class="inline-flex items-center gap-2 px-3.5 md:px-5 py-2 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-extrabold text-xs md:text-sm shadow-md shadow-emerald-500/20 hover:shadow-emerald-500/40 hover:-translate-y-0.5 transition-all"> <span>ابدأ الآن مجاناً</span> <span>←</span> </a>
     </div>
+   </div>
+  </header>
 
-    <script>
-        let isRunning = false;
-        let currentPuzzles = 0;
-        const totalPuzzles = 210;
-        let completedLessons = 0;
-        const totalLessons = 42;
-        let startTime = 0;
+  <!-- Main Content Slot -->
+  <main class="flex-grow">
+   <!-- Hero Section -->
+   <section class="relative pt-12 pb-20 md:pt-20 md:pb-28 overflow-hidden">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+     <!-- Top Floating Pill -->
+     <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-surface border border-brand-border/80 shadow-inner mb-6">
+      <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span> <span class="text-xs font-bold text-slate-300">منصة الحل المجانية بالكامل بواسطة إسلام محمود</span> <span class="bg-brand-emerald/20 text-brand-emerald text-[11px] font-black px-2 py-0.5 rounded-md">210 💎 كاملة</span>
+     </div>
+     <!-- Main Headline -->
+     <h1 class="text-3xl sm:text-5xl md:text-6xl font-black text-white leading-tight md:leading-[1.2] mb-6 tracking-tight">حل منصة <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-indigo-300 to-emerald-400">كيريو وسبريكس</span>
+      <br class="hidden sm:inline">
+      برمجة وتثقيف مالي مجاناً لطلاب الثانوية!</h1>
+     <!-- Subtitle -->
+     <p class="max-w-3xl mx-auto text-sm sm:text-lg text-slate-300 leading-relaxed mb-10 font-normal">النظام الآلي الأسرع لـ <strong class="text-emerald-400">حل منصة كيريو للبرمجة (جافاسكريبت وبايثون)</strong> و<strong class="text-blue-400">حل منصة سبريكس للتثقيف المالي</strong> لطلاب أولى وثانية ثانوي في مصر. تم تطوير هذه المنصة بواسطة <strong class="text-indigo-300">إسلام محمود</strong> لمساعدة زملائه الطلاب للحصول على <strong class="text-amber-400">210 ماسة كاملة</strong> مجاناً بدون أي رسوم.</p>
+     <!-- Hero CTA Buttons -->
+     <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
+      <a href="/portal" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-600 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-black text-base md:text-lg shadow-xl shadow-emerald-500/25 hover:shadow-emerald-500/40 hover:-translate-y-0.5 transition-all"> <span>🚀 ابدأ حل فصولك مجاناً الآن</span> <span>←</span> </a> 
+      <a href="https://t.me/querosolverbot" target="_blank" rel="noopener" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl bg-sky-600 hover:bg-sky-500 text-white font-bold text-base transition-all shadow-lg shadow-sky-600/20"> <span>🤖 استخدام بوت التليجرام المجاني</span> <span>↗</span> </a>
+     </div>
+     <!-- Live Social Proof Stats -->
+     <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+      <div class="glass-card rounded-2xl p-4 text-center">
+       <div class="text-2xl md:text-3xl font-black text-emerald-400">+10,347</div>
+       <div class="text-xs text-slate-400 mt-1">حساب طالب تم حله مجاناً</div>
+      </div>
+      <div class="glass-card rounded-2xl p-4 text-center">
+       <div class="text-2xl md:text-3xl font-black text-blue-400">210 / 210 💎</div>
+       <div class="text-xs text-slate-400 mt-1">نسبة الماسات المكتملة 100%</div>
+      </div>
+      <div class="glass-card rounded-2xl p-4 text-center">
+       <div class="text-2xl md:text-3xl font-black text-purple-400">فوري ومجاني</div>
+       <div class="text-xs text-slate-400 mt-1">بدون أي تكلفة مادية نهائياً</div>
+      </div>
+      <div class="glass-card rounded-2xl p-4 text-center">
+       <div class="text-2xl md:text-3xl font-black text-amber-400">100% آمن وموثوق</div>
+       <div class="text-xs text-slate-400 mt-1">حماية تامة لبيانات حسابك</div>
+      </div>
+     </div>
+    </div>
+   </section>
 
-        function log(message, type = 'info') {
-            const logBox = document.getElementById('logBox');
-            const entry = document.createElement('div');
-            entry.className = `log-entry ${type}`;
-            entry.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
-            logBox.appendChild(entry);
-            logBox.scrollTop = logBox.scrollHeight;
-        }
+   <!-- Supported Courses Section -->
+   <section class="py-16 bg-brand-surface/40 border-y border-brand-border/60">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="text-center max-w-2xl mx-auto mb-12">
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-white mb-3">المواد والمنصات المتاحة للحل المجاني</h2>
+      <p class="text-xs sm:text-sm text-slate-400">جميع المقررات متاحة مجاناً لخدمة طلاب الثانوية العامة والفنية</p>
+     </div>
+     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Card 1: QUREO JavaScript -->
+      <div class="glass-card rounded-2xl p-6 relative overflow-hidden flex flex-col justify-between">
+       <div>
+        <div class="flex items-center justify-between mb-4">
+         <span class="text-xs font-bold px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30"> الصف الأول الثانوي </span> <span class="text-xs font-black text-emerald-400">42 فصلاً</span>
+        </div>
+        <h3 class="text-lg font-black text-white mb-2">منصة كيريو - جافاسكريبت (JavaScript)</h3>
+        <p class="text-xs text-slate-400 leading-relaxed mb-6">مادة البرمجة وتكنولوجيا المعلومات لطلاب أولى ثانوي. حل شامل لجميع الدروس والاختبارات للحصول على 210 ماسة مجاناً.</p>
+        <div class="space-y-2 text-xs text-slate-300 mb-6">
+         <div class="flex items-center gap-2"><span>✅</span> <span>حل فوري لجميع الدروس الـ 124</span></div>
+         <div class="flex items-center gap-2"><span>✅</span> <span>إجابة كاملة لأسئلة الكود والخيارات</span></div>
+         <div class="flex items-center gap-2"><span>🎁</span> <span class="text-emerald-400 font-bold">متاح مجاناً بالكامل</span></div>
+        </div>
+       </div>
+       <a href="/portal?grade=g10&course=javascript_ar" class="w-full py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs text-center transition-colors">حل المادة الآن مجاناً</a>
+      </div>
+      <!-- Card 2: QUREO Python -->
+      <div class="glass-card rounded-2xl p-6 relative overflow-hidden flex flex-col justify-between">
+       <div>
+        <div class="flex items-center justify-between mb-4">
+         <span class="text-xs font-bold px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30"> الصف الثاني الثانوي </span> <span class="text-xs font-black text-emerald-400">10 فصول</span>
+        </div>
+        <h3 class="text-lg font-black text-white mb-2">منصة كيريو - بايثون (Python)</h3>
+        <p class="text-xs text-slate-400 leading-relaxed mb-6">مقرر لغة بايثون لطلاب الصف الثاني الثانوي. حل كامل للدروس والشفرات واختبارات الفهم بدقة عالية وبدون رسوم.</p>
+        <div class="space-y-2 text-xs text-slate-300 mb-6">
+         <div class="flex items-center gap-2"><span>✅</span> <span>حل الـ 10 فصول بنسبة 100%</span></div>
+         <div class="flex items-center gap-2"><span>✅</span> <span>الحصول على الماسات كاملة</span></div>
+         <div class="flex items-center gap-2"><span>🎁</span> <span class="text-emerald-400 font-bold">متاح مجاناً بالكامل</span></div>
+        </div>
+       </div>
+       <a href="/portal?grade=g11&course=python_short_en" class="w-full py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold text-xs text-center transition-colors">حل المادة الآن مجاناً</a>
+      </div>
+      <!-- Card 3: SPRIX Financial Literacy -->
+      <div class="glass-card rounded-2xl p-6 relative overflow-hidden flex flex-col justify-between">
+       <div>
+        <div class="flex items-center justify-between mb-4">
+         <span class="text-xs font-bold px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30"> الصف الثاني الثانوي </span> <span class="text-xs font-black text-amber-400">134 عنصراً</span>
+        </div>
+        <h3 class="text-lg font-black text-white mb-2">سبريكس - التثقيف المالي (Finance)</h3>
+        <p class="text-xs text-slate-400 leading-relaxed mb-6">منصة SPRIX Learning Square لمادة التثقيف المالي والاقتصاد. حل كامل لجميع الوحدات والاختبارات مجاناً.</p>
+        <div class="space-y-2 text-xs text-slate-300 mb-6">
+         <div class="flex items-center gap-2"><span>✅</span> <span>حل جميع الفصول والأسئلة</span></div>
+         <div class="flex items-center gap-2"><span>✅</span> <span>اجتياز الاختبارات بامتياز 100%</span></div>
+         <div class="flex items-center gap-2"><span>🎁</span> <span class="text-emerald-400 font-bold">متاح مجاناً بالكامل</span></div>
+        </div>
+       </div>
+       <a href="/portal?grade=g11&course=financial_literacy" class="w-full py-2.5 rounded-xl bg-amber-600 hover:bg-amber-500 text-slate-950 font-bold text-xs text-center transition-colors">حل المادة الآن مجاناً</a>
+      </div>
+     </div>
+    </div>
+   </section>
 
-        function updateProgress() {
-            const progress = Math.min(((currentPuzzles / totalPuzzles) * 100), 100);
-            document.getElementById('progressFill').style.width = `${progress}%`;
-            document.getElementById('progressText').textContent = `${Math.round(progress)}%`;
-            
-            const elapsedSeconds = Math.floor((Date.now() - startTime) / 1000);
-            document.getElementById('statusBox').innerHTML = `
-                ✅ الألغاز المكتملة: ${currentPuzzles} / ${totalPuzzles}<br>
-                📚 الدروس المكتملة: ${completedLessons} / ${totalLessons}<br>
-                ⏱️ الوقت المنقضي: ${elapsedSeconds} ثانية
-            `;
-        }
+   <!-- How It Works Section -->
+   <section class="py-16">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="text-center mb-12">
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-white mb-3">كيف يعمل الموقع؟ 3 خطوات بسيطة</h2>
+      <p class="text-xs sm:text-sm text-slate-400">تم تفعيل الحل المجاني بالكامل لجميع الطلاب بواسطة إسلام محمود</p>
+     </div>
+     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="glass-card rounded-2xl p-6 text-center">
+       <div class="w-12 h-12 mx-auto rounded-xl bg-blue-500/20 border border-blue-500/40 text-blue-400 text-xl font-black flex items-center justify-center mb-4">1</div>
+       <h3 class="text-base font-bold text-white mb-2">سجل دخول بحسابك</h3>
+       <p class="text-xs text-slate-400 leading-relaxed">أدخل كود الطالب وكلمة المرور الخاصة بك على المنصة الرسمية وحدد صفك الدراسي.</p>
+      </div>
+      <div class="glass-card rounded-2xl p-6 text-center">
+       <div class="w-12 h-12 mx-auto rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 text-xl font-black flex items-center justify-center mb-4">2</div>
+       <h3 class="text-base font-bold text-white mb-2">اختر المادة والفصول</h3>
+       <p class="text-xs text-slate-400 leading-relaxed">حدد مادة البرمجة أو التثقيف المالي واضغط على بدء الحل الآلي الفوري.</p>
+      </div>
+      <div class="glass-card rounded-2xl p-6 text-center">
+       <div class="w-12 h-12 mx-auto rounded-xl bg-purple-500/20 border border-purple-500/40 text-purple-400 text-xl font-black flex items-center justify-center mb-4">3</div>
+       <h3 class="text-base font-bold text-white mb-2">استمتع بالماسات الكاملة</h3>
+       <p class="text-xs text-slate-400 leading-relaxed">سوف يتم تسجيل جميع النقاط والماسات في حسابك الرسمي على المنصة خلال ثوانٍ معدودة.</p>
+      </div>
+     </div>
+    </div>
+   </section>
 
-        async function startSolving() {
-            const studentCode = document.getElementById('studentCode').value.trim();
-            const password = document.getElementById('password').value.trim();
-            const grade = document.getElementById('grade').value;
+   <!-- SEO Questions & Answers (FAQ) -->
+   <section id="faq" class="py-16 bg-brand-surface/30">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="text-center mb-12">
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-white mb-3">الأسئلة الشائعة حول المنصة المجانية</h2>
+      <p class="text-xs sm:text-sm text-slate-400">إجابات لكل استفسارات الطلاب</p>
+     </div>
+     <div class="space-y-4">
+      <details class="glass-card rounded-2xl p-5 group [&_summary::-webkit-details-marker]:hidden">
+       <summary class="flex items-center justify-between cursor-pointer font-bold text-sm text-white"> <span>هل الخدمة مجانية حقاً بدون أي رسوم؟</span> <span class="text-slate-400 group-open:rotate-180 transition-transform text-lg">▾</span> </summary>
+       <p class="text-xs text-slate-300 mt-4 leading-relaxed border-t border-slate-800 pt-3">نعم! تم إزالة كافة بوابات الدفع وأصبحت المنصة مجانية تماماً لمساعدة جميع الطلاب على إنهاء الفصول والحصول على الماسات بدون دفع أي مليم.</p>
+      </details>
+      <details class="glass-card rounded-2xl p-5 group [&_summary::-webkit-details-marker]:hidden">
+       <summary class="flex items-center justify-between cursor-pointer font-bold text-sm text-white"> <span>من هو قايم على تطوير هذا الموقع؟</span> <span class="text-slate-400 group-open:rotate-180 transition-transform text-lg">▾</span> </summary>
+       <p class="text-xs text-slate-300 mt-4 leading-relaxed border-t border-slate-800 pt-3">الموقع تم تطويره وتصميمه بواسطة المبرمج **إسلام محمود** لتسهيل حل منصات التعليم الفني والثانوي.</p>
+      </details>
+      <details class="glass-card rounded-2xl p-5 group [&_summary::-webkit-details-marker]:hidden">
+       <summary class="flex items-center justify-between cursor-pointer font-bold text-sm text-white"> <span>هل حسابي المدرسي آمن تماماً؟</span> <span class="text-slate-400 group-open:rotate-180 transition-transform text-lg">▾</span> </summary>
+       <p class="text-xs text-slate-300 mt-4 leading-relaxed border-t border-slate-800 pt-3">نعم، بياناتك تُستخدم حصراً وبشكل آمن لإتمام الفصول المطلوبة ولا يتم تخزينها أو مشاركتها نهائياً.</p>
+      </details>
+     </div>
+    </div>
+   </section>
+  </main>
 
-            if (!studentCode || !password || !grade) {
-                alert('يرجى ملء جميع الحقول!');
-                return;
-            }
-
-            // إعادة تعيين القيم عند البدء
-            isRunning = true;
-            currentPuzzles = 0;
-            completedLessons = 0;
-            startTime = Date.now();
-            document.getElementById('logBox').innerHTML = '';
-            updateProgress();
-
-            document.getElementById('startBtn').style.display = 'none';
-            document.getElementById('stopBtn').style.display = 'block';
-            
-            log(`بدء الحل التلقائي...`, 'info');
-            log(`كود الطالب: ${studentCode} | السنة: ${grade}`, 'info');
-
-            try {
-                await login(studentCode, password, grade);
-                if (isRunning) {
-                    await solveAllPuzzles();
-                }
-            } catch (error) {
-                log(`خطأ: ${error.message}`, 'error');
-            } finally {
-                if (isRunning) stopSolving();
-            }
-        }
-
-        async function login(code, pass, grade) {
-            log('جاري تسجيل الدخول...', 'info');
-            await sleep(1000);
-            log('✅ تم تسجيل الدخول بنجاح! (محاكاة)', 'success');
-        }
-
-        async function solveAllPuzzles() {
-            log('بدء حل الألغاز...', 'info');
-            
-            for (let i = 1; i <= totalPuzzles; i++) {
-                if (!isRunning) break;
-                
-                log(`حل اللغز ${i} من ${totalPuzzles}...`, 'info');
-                const res = await solvePuzzle(i);
-                log(res.message, 'success');
-                
-                currentPuzzles = i;
-                completedLessons = Math.floor(i / 5);
-                updateProgress();
-                
-                if (i % 5 === 0) {
-                    log(`🎉 تم إكمال الدرس رقم ${completedLessons}!`, 'success');
-                }
-                
-                await sleep(Math.random() * 1000 + 500);
-            }
-            
-            if (isRunning) {
-                log('🎉🎉🎉 اكتمل حل جميع الألغاز!', 'success');
-            }
-        }
-
-        async function solvePuzzle(puzzleNumber) {
-            const solutions = [
-                'console.log("Hello");',
-                'let x = 5; let y = 10; console.log(x + y);',
-                'for(let i=0; i<5; i++) { console.log(i); }',
-                'function add(a,b) { return a+b; } console.log(add(2,3));',
-                'const arr = [1,2,3]; arr.forEach(item => console.log(item));'
-            ];
-            
-            const solution = solutions[(puzzleNumber - 1) % solutions.length];
-            return {
-                success: true,
-                message: `تم قبول الحل: ${solution}`
-            };
-        }
-
-        function stopSolving() {
-            if (!isRunning) return;
-            isRunning = false;
-            document.getElementById('startBtn').style.display = 'block';
-            document.getElementById('stopBtn').style.display = 'none';
-            log('⏹️ تم إيقاف العملية.', 'error');
-        }
-
-        function sleep(ms) {
-            return new Promise(resolve => setTimeout(resolve, ms));
-        }
-    </script>
-</body>
+  <!-- Footer -->
+  <footer class="bg-brand-surface border-t border-brand-border mt-20 pt-12 pb-8">
+   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+     <!-- Brand Info -->
+     <div class="space-y-3">
+      <div class="flex items-center gap-2">
+       <img src="/images/logo.svg" alt="QureoSolver" class="w-6 h-6"> <span class="font-bold text-lg text-white">QureoSolver.xyz</span>
+      </div>
+      <p class="text-xs text-slate-400 leading-relaxed">المنصة الذكية المجانية لحل منصات البرمجة الرسمية كيريو وسبريكس بأعلى دقة وضمان كامل.</p>
+      <div class="text-xs text-emerald-400 font-semibold flex items-center gap-1.5">
+       <span>🛡️</span> <span>تطوير وإشراف: إسلام محمود</span>
+      </div>
+     </div>
+     <!-- Fast Links -->
+     <div class="space-y-2">
+      <div class="font-bold text-sm text-slate-200">روابط سريعة</div>
+      <ul class="text-xs space-y-1.5 text-slate-400">
+       <li><a href="/qureo-solutions" class="hover:text-emerald-400 transition-colors">حل منصة كيريو</a></li>
+       <li><a href="/sprix-solutions" class="hover:text-amber-400 transition-colors">حل منصة سبريكس</a></li>
+       <li><a href="/portal" class="hover:text-brand-emerald">لوحة الطالب المجانية</a></li>
+      </ul>
+     </div>
+     <!-- Support & Contact -->
+     <div class="space-y-3">
+      <div class="font-bold text-sm text-slate-200">التواصل والدعم</div>
+      <div class="flex flex-col gap-2">
+       <a href="https://t.me/querosolverbot" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-xl bg-sky-600 hover:bg-sky-500 text-white text-xs font-bold transition-all shadow-md"> <span>🤖</span> <span>بوت التيليجرام المجاني: @querosolverbot</span> </a> 
+       <a href="https://t.me/xseif_1" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-800 border border-slate-700 text-slate-300 text-xs hover:text-white transition-colors"> <span>💬</span> <span>مطور الموقع: إسلام محمود (@xseif_1)</span> </a>
+      </div>
+     </div>
+    </div>
+    <div class="pt-6 border-t border-slate-800 text-center text-xs text-slate-500 flex flex-col md:flex-row items-center justify-between gap-4">
+     <div>جميع الحقوق محفوظة © 2026 QureoSolver.xyz — تطوير وإشراف: إسلام محمود</div>
+     <div class="text-[11px] text-slate-500">منصة تعليمية مستقلة مجانية لمساعدة الطلاب.</div>
+    </div>
+   </div>
+  </footer>
+ </body>
 </html>
 
-            
