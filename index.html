@@ -1,296 +1,544 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
- <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>كيريو سولفر | QureoSolver — حل منصة كيريو وسبريكس 210 ماسة</title>
-  <!-- Primary Meta Tags -->
-  <meta name="title" content="كيريو سولفر | QureoSolver — حل منصة كيريو وسبريكس 210 ماسة">
-  <meta name="description" content="حل منصة كيريو (QUREO / QUERO / كوريو) وسبريكس (SPRIX) لطلاب أولى وثانية ثانوي. حل فوري أونلاين وبوت تليجرام بضمان 210 ماسة كاملة — مجاناً بالكامل بواسطة إسلام محمود!">
-  <meta name="keywords" content="كيريو سولفر, qureo solver, quero solver, solver, حل منصة كيريو, حل كيريو, حلول كيريو, حل منصة كوريو, حل منصة سبريكس, sprix solver, كيريو اولى ثانوي, كيريو تانية ثانوي, حل اسئلة منصة كيريو, حل كيريو جافاسكريبت, حل كيريو بايثون, حل سبريكس ثقافة مالية, بوت حل كيريو تليجرام, كيريو 210 ماسة, تطبيق سولفر, qureo eg">
-  <meta name="robots" content="index, follow">
-  <meta name="theme-color" content="#0b0f19">
-  <!-- Canonical URL -->
-  <link rel="canonical" href="https://querosolver.xyz/">
-  <!-- Favicon -->
-  <link rel="icon" href="/favicon.ico" sizes="any">
-  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
-  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png">
-  <link rel="shortcut icon" href="/favicon.ico">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/svg+xml" href="/images/logo.svg">
-  <!-- Open Graph / Facebook / WhatsApp -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://querosolver.xyz/">
-  <meta property="og:site_name" content="QureoSolver">
-  <meta property="og:title" content="كيريو سولفر | QureoSolver — حل منصة كيريو وسبريكس 210 ماسة">
-  <meta property="og:description" content="حل منصة كيريو (QUREO / QUERO / كوريو) وسبريكس (SPRIX) لطلاب أولى وثانية ثانوي. حل فوري أونلاين وبوت تليجرام بضمان 210 ماسة كاملة — مجاناً بالكامل!">
-  <meta property="og:image" content="https://querosolver.xyz/images/og-preview.png">
-  <meta property="og:locale" content="ar_EG">
-  <!-- Google Fonts: Cairo -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet">
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          fontFamily: {
-            cairo: ['Cairo', 'sans-serif'],
-            mono: ['JetBrains Mono', 'monospace']
-          },
-          colors: {
-            brand: {
-              dark: '#080c14',
-              surface: '#0f172a',
-              card: '#1e293b',
-              border: '#334155',
-              emerald: '#10b981',
-              blue: '#3b82f6',
-              purple: '#8b5cf6',
-              rose: '#f43f5e',
-              gold: '#fbbf24'
-            }
-          }
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goal Keeper Store</title>
+    <style>
+        * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { margin: 0; background-color: #f8f9fa; color: #333; padding-bottom: 90px; }
+        
+        /* الهيدر العلوي */
+        header {
+            background-color: #0b3d2c;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
-      }
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .logo span { color: #ff6600; }
+        
+        .cart-btn {
+            background: #ff6600;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.9rem;
+        }
+
+        /* شريط البحث */
+        .search-box {
+            display: flex;
+            background: white;
+            border-radius: 25px;
+            overflow: hidden;
+            padding: 3px;
+        }
+        .search-box input {
+            flex: 1;
+            border: none;
+            padding: 8px 15px;
+            outline: none;
+            font-size: 0.95rem;
+        }
+        .search-box button {
+            background: #ff6600;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 22px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* شريط التنقل بين الأقسام */
+        .nav-categories {
+            display: flex;
+            gap: 15px;
+            overflow-x: auto;
+            padding: 0 5px 5px;
+            white-space: nowrap;
+        }
+        .nav-categories::-webkit-scrollbar { display: none; }
+        .nav-link {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 0.9rem;
+            cursor: pointer;
+            padding-bottom: 3px;
+        }
+        .nav-link.active, .nav-link:hover {
+            color: white;
+            border-bottom: 2px solid #ff6600;
+            font-weight: bold;
+        }
+
+        /* البانر الرئيسي */
+        .hero {
+            background: linear-gradient(135deg, #0b3d2c, #135d43);
+            color: white;
+            padding: 30px 20px;
+            text-align: right;
+        }
+        .hero h2 { font-size: 1.6rem; margin: 0 0 10px; line-height: 1.4; }
+        .hero p { font-size: 0.9rem; color: #ddd; margin-bottom: 20px; }
+        .hero-btn {
+            background: #ff6600;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        /* أقسام التسوق السريع الدائرية */
+        .section-title {
+            padding: 20px 15px 10px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #0b3d2c;
+        }
+        .cat-circles {
+            display: flex;
+            gap: 15px;
+            overflow-x: auto;
+            padding: 10px 15px;
+        }
+        .cat-circles::-webkit-scrollbar { display: none; }
+        .cat-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            min-width: 80px;
+        }
+        .cat-circle-img {
+            width: 70px;
+            height: 70px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            border: 2px solid #ddd;
+            overflow: hidden;
+        }
+        .cat-circle-img img { width: 100%; height: 100%; object-fit: cover; }
+        .cat-name { font-size: 0.8rem; margin-top: 6px; text-align: center; font-weight: bold; color: #444; }
+
+        /* شبكة المنتجات */
+        .category-container { padding: 10px 15px; }
+        .category-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .category-header h3 { margin: 0; font-size: 1.1rem; color: #0b3d2c; border-right: 4px solid #0b3d2c; padding-right: 8px; }
+        .view-more { color: #ff6600; text-decoration: none; font-size: 0.85rem; font-weight: bold; cursor: pointer; }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 15px;
+        }
+        .card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+        }
+        .badge {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: #ff4757;
+            color: white;
+            font-size: 0.7rem;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            z-index: 2;
+        }
+        .badge.sale { background: #ff6600; }
+        
+        .card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            background: #f1f1f1;
+        }
+        .card-body { padding: 10px; }
+        .card-title { font-size: 0.9rem; margin: 0 0 5px; font-weight: bold; color: #333; height: 38px; overflow: hidden; }
+        .rating { color: #ffc107; font-size: 0.75rem; margin-bottom: 6px; }
+        .card-price { color: #0b3d2c; font-weight: bold; font-size: 1rem; margin-bottom: 10px; }
+        .card-price span { text-decoration: line-through; color: #888; font-size: 0.8rem; margin-left: 5px; }
+        
+        .add-btn {
+            background: #0b3d2c;
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 8px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.85rem;
+        }
+        .add-btn:active { transform: scale(0.98); }
+
+        /* نافذة السلة (Modal) */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.6);
+            z-index: 200;
+            justify-content: center;
+            align-items: flex-end;
+        }
+        .modal.open { display: flex; }
+        .modal-content {
+            background: white;
+            width: 100%;
+            max-width: 500px;
+            border-radius: 20px 20px 0 0;
+            padding: 20px;
+            max-height: 85vh;
+            overflow-y: auto;
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        .close-btn { background: none; border: none; font-size: 1.5rem; cursor: pointer; }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #f1f1f1;
+        }
+        .qty-controls button {
+            background: #eee;
+            border: none;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .customer-info input, .customer-info textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+        .whatsapp-btn {
+            background: #25D366;
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            margin-top: 15px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-top">
+        <a href="#" class="logo">⚽ Goal Keeper <span>Store</span></a>
+        <button class="cart-btn" onclick="toggleCart()">
+            🛒 السلة (<span id="cart-count">0</span>)
+        </button>
+    </div>
+    <div class="search-box">
+        <input type="text" id="search-input" placeholder="ابحث عن كرة، قميص، حذاء..." oninput="searchProducts()">
+        <button onclick="searchProducts()">بحث</button>
+    </div>
+    <div class="nav-categories">
+        <a class="nav-link active" onclick="filterCategory('all', this)">الكل</a>
+        <a class="nav-link" onclick="filterCategory('balls', this)">الكرات</a>
+        <a class="nav-link" onclick="filterCategory('clothes', this)">القمصان والملابس</a>
+        <a class="nav-link" onclick="filterCategory('shoes', this)">أحذية كرة القدم</a>
+        <a class="nav-link" onclick="filterCategory('gloves', this)">قفازات الحراس</a>
+        <a class="nav-link" onclick="filterCategory('training', this)">معدات التدريب</a>
+        <a class="nav-link" onclick="filterCategory('accessories', this)">إكسسوارات</a>
+    </div>
+</header>
+
+<div class="hero">
+    <h2>كل ما يحتاجه اللاعب وحارس المرمى في مكان واحد</h2>
+    <p>كرات، ملابس، أحذية، قفازات ومعدات تدريب من أفضل الماركات.</p>
+    <button class="hero-btn" onclick="window.scrollTo({top: 500, behavior: 'smooth'});">تسوق الآن</button>
+</div>
+
+<!-- الأقسام الدائرية السريعة -->
+<div class="section-title">تسوق حسب القسم</div>
+<div class="cat-circles">
+    <div class="cat-item" onclick="filterCategory('balls')">
+        <div class="cat-circle-img"><img src="https://images.unsplash.com/photo-1614632537423-1e6c2e7e0aab?w=200" alt="الكرات"></div>
+        <div class="cat-name">الكرات</div>
+    </div>
+    <div class="cat-item" onclick="filterCategory('clothes')">
+        <div class="cat-circle-img"><img src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=200" alt="الملابس"></div>
+        <div class="cat-name">القمصان والملابس</div>
+    </div>
+    <div class="cat-item" onclick="filterCategory('shoes')">
+        <div class="cat-circle-img"><img src="https://images.unsplash.com/photo-1511886929837-354d827aae26?w=200" alt="الأحذية"></div>
+        <div class="cat-name">أحذية كرة القدم</div>
+    </div>
+    <div class="cat-item" onclick="filterCategory('gloves')">
+        <div class="cat-circle-img"><img src="https://images.unsplash.com/photo-1518604666860-9ed391f76460?w=200" alt="قفازات"></div>
+        <div class="cat-name">قفازات الحراس</div>
+    </div>
+    <div class="cat-item" onclick="filterCategory('training')">
+        <div class="cat-circle-img"><img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?w=200" alt="تدريب"></div>
+        <div class="cat-name">معدات التدريب</div>
+    </div>
+    <div class="cat-item" onclick="filterCategory('accessories')">
+        <div class="cat-circle-img"><img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=200" alt="إكسسوارات"></div>
+        <div class="cat-name">إكسسوارات</div>
+    </div>
+</div>
+
+<!-- عرض المنتجات -->
+<div class="category-container">
+    <div class="category-header">
+        <h3>جميع المنتجات</h3>
+    </div>
+    <div class="products-grid" id="products-container"></div>
+</div>
+
+<!-- نافذة السلة -->
+<div class="modal" id="cart-modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>🛒 سلة المشتريات</h3>
+            <button class="close-btn" onclick="toggleCart()">×</button>
+        </div>
+        <div id="cart-items"></div>
+        <h4 id="total-price" style="text-align: left; color: #0b3d2c;">الإجمالي: 0 ج.م</h4>
+        
+        <div class="customer-info">
+            <input type="text" id="cust-name" placeholder="اسم العميل بالكامل" required>
+            <input type="text" id="cust-address" placeholder="العنوان بالتفصيل (المحافظة، المنطقة)" required>
+            <textarea id="cust-notes" rows="2" placeholder="ملاحظات (المقاس المطلوب، اللون، إلخ...)"></textarea>
+        </div>
+
+        <button class="whatsapp-btn" onclick="sendToWhatsApp()">📲 إرسال الطلب عبر واتساب</button>
+    </div>
+</div>
+
+<script>
+    // رقم الواتساب الخاص بك المحدث
+    const WHATSAPP_NUMBER = "201062962959"; 
+
+    // قاعدة بيانات المنتجات (روابط صور أونلاين جاهزة بدون مساحة تخزين)
+    const products = [
+        { id: 1, name: "كرة مباريات رسمية مقاس 5", price: 189, oldPrice: 229, category: "balls", badge: "خصم 17%", rating: "⭐⭐⭐⭐⭐ (312)", img: "https://images.unsplash.com/photo-1614632537423-1e6c2e7e0aab?w=400" },
+        { id: 2, name: "كرة تدريب مقاس 5", price: 79, oldPrice: null, category: "balls", badge: "", rating: "⭐⭐⭐⭐⭐ (540)", img: "https://images.unsplash.com/photo-1575361204480-aadea25e6e68?w=400" },
+        { id: 3, name: "كرة صالات Futsal", price: 99, oldPrice: null, category: "balls", badge: "", rating: "⭐⭐⭐⭐⭐ (120)", img: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=400" },
+        { id: 4, name: "قميص نادي - الأساسي", price: 249, oldPrice: null, category: "clothes", badge: "الأكثر مبيعاً", rating: "⭐⭐⭐⭐⭐ (410)", img: "https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=400" },
+        { id: 5, name: "طقم تدريب (قميص + شورت)", price: 149, oldPrice: 179, category: "clothes", badge: "خصم 17%", rating: "⭐⭐⭐⭐⭐ (205)", img: "https://images.unsplash.com/photo-1516731415850-51c35223a577?w=400" },
+        { id: 6, name: "جاكيت رياضي شتوي", price: 219, oldPrice: null, category: "clothes", badge: "", rating: "⭐⭐⭐⭐⭐ (98)", img: "https://images.unsplash.com/photo-1544441893-675973e31985?w=400" },
+        { id: 7, name: "حذاء كرة قدم (ستارز) برو", price: 650, oldPrice: 750, category: "shoes", badge: "خصم", rating: "⭐⭐⭐⭐⭐ (180)", img: "https://images.unsplash.com/photo-1511886929837-354d827aae26?w=400" },
+        { id: 8, name: "قفاز حارس مرمى مع حماية للصوابع", price: 380, oldPrice: 450, category: "gloves", badge: "مميز", rating: "⭐⭐⭐⭐⭐ (230)", img: "https://images.unsplash.com/photo-1518604666860-9ed391f76460?w=400" },
+        { id: 9, name: "حواجز تدريب سرعات وخفة", price: 220, oldPrice: null, category: "training", badge: "", rating: "⭐⭐⭐⭐⭐ (75)", img: "https://images.unsplash.com/photo-1517649763962-0c623066013b?w=400" },
+        { id: 10, name: "قنينة ماء رياضية للتدريبات", price: 65, oldPrice: null, category: "accessories", badge: "", rating: "⭐⭐⭐⭐⭐ (140)", img: "https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=400" }
+    ];
+
+    let cart = [];
+    let currentFilter = 'all';
+
+    function renderProducts(filter = 'all', searchQuery = '') {
+        const container = document.getElementById('products-container');
+        container.innerHTML = '';
+        
+        let filtered = products.filter(p => {
+            let matchesCategory = (filter === 'all' || p.category === filter);
+            let matchesSearch = p.name.toLowerCase().includes(searchQuery.toLowerCase());
+            return matchesCategory && matchesSearch;
+        });
+
+        if (filtered.length === 0) {
+            container.innerHTML = '<p style="grid-column: 1/-1; text-align:center; color:#888; padding:20px;">عذراً، لمن نجد منتجات مطابقة لبحثك.</p>';
+            return;
+        }
+
+        filtered.forEach(p => {
+            let badgeHtml = p.badge ? `<div class="badge ${p.badge.includes('خصم') ? 'sale' : ''}">${p.badge}</div>` : '';
+            let oldPriceHtml = p.oldPrice ? `<span>${p.oldPrice} ج.م</span>` : '';
+            
+            container.innerHTML += `
+                <div class="card">
+                    ${badgeHtml}
+                    <img src="${p.img}" alt="${p.name}">
+                    <div class="card-body">
+                        <div class="card-title">${p.name}</div>
+                        <div class="rating">${p.rating}</div>
+                        <div class="card-price">${p.price} ج.م ${oldPriceHtml}</div>
+                        <button class="add-btn" onclick="addToCart(${p.id})">+ أضف للسلة</button>
+                    </div>
+                </div>
+            `;
+        });
     }
-  </script>
-  <link rel="stylesheet" href="/css/style.css?v=1795198209554">
- </head>
- <body class="bg-brand-dark text-slate-100 font-cairo antialiased min-h-screen flex flex-col selection:bg-brand-blue selection:text-white">
-  <!-- Navigation Bar -->
-  <header class="sticky top-0 z-50 backdrop-blur-md bg-brand-surface/85 border-b border-brand-border/60 transition-all">
-   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-    <!-- Brand Logo -->
-    <a href="/" class="flex items-center gap-2.5 group"> 
-     <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-blue/30 via-brand-purple/20 to-brand-emerald/30 border border-slate-700/80 flex items-center justify-center shadow-lg shadow-brand-blue/10 group-hover:scale-105 transition-transform p-1.5">
-      <img src="/images/logo.svg" alt="QureoSolver" class="w-full h-full drop-shadow-md">
-     </div> 
-     <div>
-      <div class="flex items-center gap-2">
-       <span class="font-extrabold text-base md:text-xl tracking-tight text-white group-hover:text-brand-blue transition-colors"> Qureo<span class="text-brand-emerald">Solver</span> </span> <span class="bg-brand-card text-emerald-400 border border-emerald-500/30 text-[9px] md:text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider"> 210 💎 </span>
-      </div>
-      <div class="text-[9px] md:text-[10px] text-slate-400 font-medium truncate max-w-[170px] sm:max-w-none">إشراف وتطوير: إسلام محمود</div>
-     </div> 
-    </a> 
-    <!-- Navigation Links & Action Buttons -->
-    <div class="flex items-center gap-3 md:gap-6">
-     <nav aria-label="Main Navigation" class="hidden sm:flex items-center gap-4 md:gap-6">
-      <a href="/qureo-solutions" class="inline-flex items-center gap-1.5 text-xs md:text-sm font-semibold text-slate-300 hover:text-emerald-400 transition-colors"><span>حل كيريو</span></a> 
-      <a href="/sprix-solutions" class="inline-flex items-center gap-1.5 text-xs md:text-sm font-semibold text-slate-300 hover:text-amber-400 transition-colors"><span>حل سبريكس</span></a> 
-      <a href="/portal" class="inline-flex items-center gap-1.5 text-xs md:text-sm font-semibold text-slate-300 hover:text-white transition-colors"><span>لوحة الطالب</span></a> 
-      <a href="#faq" class="inline-flex items-center gap-1.5 text-xs md:text-sm font-semibold text-slate-300 hover:text-white transition-colors"><span>الأسئلة الشائعة</span></a>
-     </nav>
-     <!-- Official Telegram Bot Button -->
-     <a href="https://t.me/querosolverbot" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-sky-500/10 hover:bg-sky-500/20 border border-sky-500/30 text-sky-300 hover:text-white text-xs font-bold transition-all shadow-sm group"> 
-      <svg class="w-4 h-4 fill-current text-sky-400 group-hover:scale-110 transition-transform" viewBox="0 0 24 24">
-       <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z" />
-      </svg> 
-      <span class="hidden sm:inline">البوت:</span> <span class="text-sky-200">@querosolverbot</span> 
-     </a> 
-     <!-- CTA Start Solving Button -->
-     <a href="/portal" class="inline-flex items-center gap-2 px-3.5 md:px-5 py-2 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-extrabold text-xs md:text-sm shadow-md shadow-emerald-500/20 hover:shadow-emerald-500/40 hover:-translate-y-0.5 transition-all"> <span>ابدأ الآن مجاناً</span> <span>←</span> </a>
-    </div>
-   </div>
-  </header>
 
-  <!-- Main Content Slot -->
-  <main class="flex-grow">
-   <!-- Hero Section -->
-   <section class="relative pt-12 pb-20 md:pt-20 md:pb-28 overflow-hidden">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-     <!-- Top Floating Pill -->
-     <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-surface border border-brand-border/80 shadow-inner mb-6">
-      <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span> <span class="text-xs font-bold text-slate-300">منصة الحل المجانية بالكامل بواسطة إسلام محمود</span> <span class="bg-brand-emerald/20 text-brand-emerald text-[11px] font-black px-2 py-0.5 rounded-md">210 💎 كاملة</span>
-     </div>
-     <!-- Main Headline -->
-     <h1 class="text-3xl sm:text-5xl md:text-6xl font-black text-white leading-tight md:leading-[1.2] mb-6 tracking-tight">حل منصة <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-indigo-300 to-emerald-400">كيريو وسبريكس</span>
-      <br class="hidden sm:inline">
-      برمجة وتثقيف مالي مجاناً لطلاب الثانوية!</h1>
-     <!-- Subtitle -->
-     <p class="max-w-3xl mx-auto text-sm sm:text-lg text-slate-300 leading-relaxed mb-10 font-normal">النظام الآلي الأسرع لـ <strong class="text-emerald-400">حل منصة كيريو للبرمجة (جافاسكريبت وبايثون)</strong> و<strong class="text-blue-400">حل منصة سبريكس للتثقيف المالي</strong> لطلاب أولى وثانية ثانوي في مصر. تم تطوير هذه المنصة بواسطة <strong class="text-indigo-300">إسلام محمود</strong> لمساعدة زملائه الطلاب للحصول على <strong class="text-amber-400">210 ماسة كاملة</strong> مجاناً بدون أي رسوم.</p>
-     <!-- Hero CTA Buttons -->
-     <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-      <a href="/portal" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-600 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-black text-base md:text-lg shadow-xl shadow-emerald-500/25 hover:shadow-emerald-500/40 hover:-translate-y-0.5 transition-all"> <span>🚀 ابدأ حل فصولك مجاناً الآن</span> <span>←</span> </a> 
-      <a href="https://t.me/querosolverbot" target="_blank" rel="noopener" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl bg-sky-600 hover:bg-sky-500 text-white font-bold text-base transition-all shadow-lg shadow-sky-600/20"> <span>🤖 استخدام بوت التليجرام المجاني</span> <span>↗</span> </a>
-     </div>
-     <!-- Live Social Proof Stats -->
-     <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
-      <div class="glass-card rounded-2xl p-4 text-center">
-       <div class="text-2xl md:text-3xl font-black text-emerald-400">+10,347</div>
-       <div class="text-xs text-slate-400 mt-1">حساب طالب تم حله مجاناً</div>
-      </div>
-      <div class="glass-card rounded-2xl p-4 text-center">
-       <div class="text-2xl md:text-3xl font-black text-blue-400">210 / 210 💎</div>
-       <div class="text-xs text-slate-400 mt-1">نسبة الماسات المكتملة 100%</div>
-      </div>
-      <div class="glass-card rounded-2xl p-4 text-center">
-       <div class="text-2xl md:text-3xl font-black text-purple-400">فوري ومجاني</div>
-       <div class="text-xs text-slate-400 mt-1">بدون أي تكلفة مادية نهائياً</div>
-      </div>
-      <div class="glass-card rounded-2xl p-4 text-center">
-       <div class="text-2xl md:text-3xl font-black text-amber-400">100% آمن وموثوق</div>
-       <div class="text-xs text-slate-400 mt-1">حماية تامة لبيانات حسابك</div>
-      </div>
-     </div>
-    </div>
-   </section>
+    function filterCategory(category, element) {
+        currentFilter = category;
+        if(element) {
+            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+            element.classList.add('active');
+        }
+        let query = document.getElementById('search-input').value;
+        renderProducts(category, query);
+    }
 
-   <!-- Supported Courses Section -->
-   <section class="py-16 bg-brand-surface/40 border-y border-brand-border/60">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-     <div class="text-center max-w-2xl mx-auto mb-12">
-      <h2 class="text-2xl sm:text-3xl font-extrabold text-white mb-3">المواد والمنصات المتاحة للحل المجاني</h2>
-      <p class="text-xs sm:text-sm text-slate-400">جميع المقررات متاحة مجاناً لخدمة طلاب الثانوية العامة والفنية</p>
-     </div>
-     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <!-- Card 1: QUREO JavaScript -->
-      <div class="glass-card rounded-2xl p-6 relative overflow-hidden flex flex-col justify-between">
-       <div>
-        <div class="flex items-center justify-between mb-4">
-         <span class="text-xs font-bold px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30"> الصف الأول الثانوي </span> <span class="text-xs font-black text-emerald-400">42 فصلاً</span>
-        </div>
-        <h3 class="text-lg font-black text-white mb-2">منصة كيريو - جافاسكريبت (JavaScript)</h3>
-        <p class="text-xs text-slate-400 leading-relaxed mb-6">مادة البرمجة وتكنولوجيا المعلومات لطلاب أولى ثانوي. حل شامل لجميع الدروس والاختبارات للحصول على 210 ماسة مجاناً.</p>
-        <div class="space-y-2 text-xs text-slate-300 mb-6">
-         <div class="flex items-center gap-2"><span>✅</span> <span>حل فوري لجميع الدروس الـ 124</span></div>
-         <div class="flex items-center gap-2"><span>✅</span> <span>إجابة كاملة لأسئلة الكود والخيارات</span></div>
-         <div class="flex items-center gap-2"><span>🎁</span> <span class="text-emerald-400 font-bold">متاح مجاناً بالكامل</span></div>
-        </div>
-       </div>
-       <a href="/portal?grade=g10&course=javascript_ar" class="w-full py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs text-center transition-colors">حل المادة الآن مجاناً</a>
-      </div>
-      <!-- Card 2: QUREO Python -->
-      <div class="glass-card rounded-2xl p-6 relative overflow-hidden flex flex-col justify-between">
-       <div>
-        <div class="flex items-center justify-between mb-4">
-         <span class="text-xs font-bold px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30"> الصف الثاني الثانوي </span> <span class="text-xs font-black text-emerald-400">10 فصول</span>
-        </div>
-        <h3 class="text-lg font-black text-white mb-2">منصة كيريو - بايثون (Python)</h3>
-        <p class="text-xs text-slate-400 leading-relaxed mb-6">مقرر لغة بايثون لطلاب الصف الثاني الثانوي. حل كامل للدروس والشفرات واختبارات الفهم بدقة عالية وبدون رسوم.</p>
-        <div class="space-y-2 text-xs text-slate-300 mb-6">
-         <div class="flex items-center gap-2"><span>✅</span> <span>حل الـ 10 فصول بنسبة 100%</span></div>
-         <div class="flex items-center gap-2"><span>✅</span> <span>الحصول على الماسات كاملة</span></div>
-         <div class="flex items-center gap-2"><span>🎁</span> <span class="text-emerald-400 font-bold">متاح مجاناً بالكامل</span></div>
-        </div>
-       </div>
-       <a href="/portal?grade=g11&course=python_short_en" class="w-full py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold text-xs text-center transition-colors">حل المادة الآن مجاناً</a>
-      </div>
-      <!-- Card 3: SPRIX Financial Literacy -->
-      <div class="glass-card rounded-2xl p-6 relative overflow-hidden flex flex-col justify-between">
-       <div>
-        <div class="flex items-center justify-between mb-4">
-         <span class="text-xs font-bold px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30"> الصف الثاني الثانوي </span> <span class="text-xs font-black text-amber-400">134 عنصراً</span>
-        </div>
-        <h3 class="text-lg font-black text-white mb-2">سبريكس - التثقيف المالي (Finance)</h3>
-        <p class="text-xs text-slate-400 leading-relaxed mb-6">منصة SPRIX Learning Square لمادة التثقيف المالي والاقتصاد. حل كامل لجميع الوحدات والاختبارات مجاناً.</p>
-        <div class="space-y-2 text-xs text-slate-300 mb-6">
-         <div class="flex items-center gap-2"><span>✅</span> <span>حل جميع الفصول والأسئلة</span></div>
-         <div class="flex items-center gap-2"><span>✅</span> <span>اجتياز الاختبارات بامتياز 100%</span></div>
-         <div class="flex items-center gap-2"><span>🎁</span> <span class="text-emerald-400 font-bold">متاح مجاناً بالكامل</span></div>
-        </div>
-       </div>
-       <a href="/portal?grade=g11&course=financial_literacy" class="w-full py-2.5 rounded-xl bg-amber-600 hover:bg-amber-500 text-slate-950 font-bold text-xs text-center transition-colors">حل المادة الآن مجاناً</a>
-      </div>
-     </div>
-    </div>
-   </section>
+    function searchProducts() {
+        let query = document.getElementById('search-input').value;
+        renderProducts(currentFilter, query);
+    }
 
-   <!-- How It Works Section -->
-   <section class="py-16">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-     <div class="text-center mb-12">
-      <h2 class="text-2xl sm:text-3xl font-extrabold text-white mb-3">كيف يعمل الموقع؟ 3 خطوات بسيطة</h2>
-      <p class="text-xs sm:text-sm text-slate-400">تم تفعيل الحل المجاني بالكامل لجميع الطلاب بواسطة إسلام محمود</p>
-     </div>
-     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <div class="glass-card rounded-2xl p-6 text-center">
-       <div class="w-12 h-12 mx-auto rounded-xl bg-blue-500/20 border border-blue-500/40 text-blue-400 text-xl font-black flex items-center justify-center mb-4">1</div>
-       <h3 class="text-base font-bold text-white mb-2">سجل دخول بحسابك</h3>
-       <p class="text-xs text-slate-400 leading-relaxed">أدخل كود الطالب وكلمة المرور الخاصة بك على المنصة الرسمية وحدد صفك الدراسي.</p>
-      </div>
-      <div class="glass-card rounded-2xl p-6 text-center">
-       <div class="w-12 h-12 mx-auto rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 text-xl font-black flex items-center justify-center mb-4">2</div>
-       <h3 class="text-base font-bold text-white mb-2">اختر المادة والفصول</h3>
-       <p class="text-xs text-slate-400 leading-relaxed">حدد مادة البرمجة أو التثقيف المالي واضغط على بدء الحل الآلي الفوري.</p>
-      </div>
-      <div class="glass-card rounded-2xl p-6 text-center">
-       <div class="w-12 h-12 mx-auto rounded-xl bg-purple-500/20 border border-purple-500/40 text-purple-400 text-xl font-black flex items-center justify-center mb-4">3</div>
-       <h3 class="text-base font-bold text-white mb-2">استمتع بالماسات الكاملة</h3>
-       <p class="text-xs text-slate-400 leading-relaxed">سوف يتم تسجيل جميع النقاط والماسات في حسابك الرسمي على المنصة خلال ثوانٍ معدودة.</p>
-      </div>
-     </div>
-    </div>
-   </section>
+    function addToCart(id) {
+        const item = cart.find(i => i.id === id);
+        if (item) {
+            item.qty++;
+        } else {
+            const prod = products.find(p => p.id === id);
+            cart.push({ ...prod, qty: 1 });
+        }
+        updateCartUI();
+        // إشعار سريع بإضافة المنتج
+        alert("تمت الإضافة إلى السلة بنجاح! 🛒");
+    }
 
-   <!-- SEO Questions & Answers (FAQ) -->
-   <section id="faq" class="py-16 bg-brand-surface/30">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-     <div class="text-center mb-12">
-      <h2 class="text-2xl sm:text-3xl font-extrabold text-white mb-3">الأسئلة الشائعة حول المنصة المجانية</h2>
-      <p class="text-xs sm:text-sm text-slate-400">إجابات لكل استفسارات الطلاب</p>
-     </div>
-     <div class="space-y-4">
-      <details class="glass-card rounded-2xl p-5 group [&_summary::-webkit-details-marker]:hidden">
-       <summary class="flex items-center justify-between cursor-pointer font-bold text-sm text-white"> <span>هل الخدمة مجانية حقاً بدون أي رسوم؟</span> <span class="text-slate-400 group-open:rotate-180 transition-transform text-lg">▾</span> </summary>
-       <p class="text-xs text-slate-300 mt-4 leading-relaxed border-t border-slate-800 pt-3">نعم! تم إزالة كافة بوابات الدفع وأصبحت المنصة مجانية تماماً لمساعدة جميع الطلاب على إنهاء الفصول والحصول على الماسات بدون دفع أي مليم.</p>
-      </details>
-      <details class="glass-card rounded-2xl p-5 group [&_summary::-webkit-details-marker]:hidden">
-       <summary class="flex items-center justify-between cursor-pointer font-bold text-sm text-white"> <span>من هو قايم على تطوير هذا الموقع؟</span> <span class="text-slate-400 group-open:rotate-180 transition-transform text-lg">▾</span> </summary>
-       <p class="text-xs text-slate-300 mt-4 leading-relaxed border-t border-slate-800 pt-3">الموقع تم تطويره وتصميمه بواسطة المبرمج **إسلام محمود** لتسهيل حل منصات التعليم الفني والثانوي.</p>
-      </details>
-      <details class="glass-card rounded-2xl p-5 group [&_summary::-webkit-details-marker]:hidden">
-       <summary class="flex items-center justify-between cursor-pointer font-bold text-sm text-white"> <span>هل حسابي المدرسي آمن تماماً؟</span> <span class="text-slate-400 group-open:rotate-180 transition-transform text-lg">▾</span> </summary>
-       <p class="text-xs text-slate-300 mt-4 leading-relaxed border-t border-slate-800 pt-3">نعم، بياناتك تُستخدم حصراً وبشكل آمن لإتمام الفصول المطلوبة ولا يتم تخزينها أو مشاركتها نهائياً.</p>
-      </details>
-     </div>
-    </div>
-   </section>
-  </main>
+    function changeQty(id, delta) {
+        const item = cart.find(i => i.id === id);
+        if (!item) return;
+        item.qty += delta;
+        if (item.qty <= 0) {
+            cart = cart.filter(i => i.id !== id);
+        }
+        updateCartUI();
+    }
 
-  <!-- Footer -->
-  <footer class="bg-brand-surface border-t border-brand-border mt-20 pt-12 pb-8">
-   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-     <!-- Brand Info -->
-     <div class="space-y-3">
-      <div class="flex items-center gap-2">
-       <img src="/images/logo.svg" alt="QureoSolver" class="w-6 h-6"> <span class="font-bold text-lg text-white">QureoSolver.xyz</span>
-      </div>
-      <p class="text-xs text-slate-400 leading-relaxed">المنصة الذكية المجانية لحل منصات البرمجة الرسمية كيريو وسبريكس بأعلى دقة وضمان كامل.</p>
-      <div class="text-xs text-emerald-400 font-semibold flex items-center gap-1.5">
-       <span>🛡️</span> <span>تطوير وإشراف: إسلام محمود</span>
-      </div>
-     </div>
-     <!-- Fast Links -->
-     <div class="space-y-2">
-      <div class="font-bold text-sm text-slate-200">روابط سريعة</div>
-      <ul class="text-xs space-y-1.5 text-slate-400">
-       <li><a href="/qureo-solutions" class="hover:text-emerald-400 transition-colors">حل منصة كيريو</a></li>
-       <li><a href="/sprix-solutions" class="hover:text-amber-400 transition-colors">حل منصة سبريكس</a></li>
-       <li><a href="/portal" class="hover:text-brand-emerald">لوحة الطالب المجانية</a></li>
-      </ul>
-     </div>
-     <!-- Support & Contact -->
-     <div class="space-y-3">
-      <div class="font-bold text-sm text-slate-200">التواصل والدعم</div>
-      <div class="flex flex-col gap-2">
-       <a href="https://t.me/querosolverbot" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-xl bg-sky-600 hover:bg-sky-500 text-white text-xs font-bold transition-all shadow-md"> <span>🤖</span> <span>بوت التيليجرام المجاني: @querosolverbot</span> </a> 
-       <a href="https://t.me/xseif_1" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-800 border border-slate-700 text-slate-300 text-xs hover:text-white transition-colors"> <span>💬</span> <span>مطور الموقع: إسلام محمود (@xseif_1)</span> </a>
-      </div>
-     </div>
-    </div>
-    <div class="pt-6 border-t border-slate-800 text-center text-xs text-slate-500 flex flex-col md:flex-row items-center justify-between gap-4">
-     <div>جميع الحقوق محفوظة © 2026 QureoSolver.xyz — تطوير وإشراف: إسلام محمود</div>
-     <div class="text-[11px] text-slate-500">منصة تعليمية مستقلة مجانية لمساعدة الطلاب.</div>
-    </div>
-   </div>
-  </footer>
- </body>
+    function updateCartUI() {
+        document.getElementById('cart-count').innerText = cart.reduce((sum, i) => sum + i.qty, 0);
+        const itemsContainer = document.getElementById('cart-items');
+        itemsContainer.innerHTML = '';
+        let total = 0;
+
+        if (cart.length === 0) {
+            itemsContainer.innerHTML = '<p style="text-align:center; color:#888; padding:15px;">السلة فارغة حالياً</p>';
+        }
+
+        cart.forEach(item => {
+            let sub = item.price * item.qty;
+            total += sub;
+            itemsContainer.innerHTML += `
+                <div class="cart-item">
+                    <div>
+                        <strong>${item.name}</strong><br>
+                        <small>${item.price} ج.م × ${item.qty} = ${sub} ج.م</small>
+                    </div>
+                    <div class="qty-controls">
+                        <button onclick="changeQty(${item.id}, -1)">-</button>
+                        <span style="margin: 0 8px;">${item.qty}</span>
+                        <button onclick="changeQty(${item.id}, 1)">+</button>
+                    </div>
+                </div>
+            `;
+        });
+
+        document.getElementById('total-price').innerText = `الإجمالي: ${total} ج.م`;
+    }
+
+    function toggleCart() {
+        document.getElementById('cart-modal').classList.toggle('open');
+    }
+
+    function sendToWhatsApp() {
+        if (cart.length === 0) {
+            alert("السلة فارغة! اختر منتجات أولاً.");
+            return;
+        }
+        const name = document.getElementById('cust-name').value.trim();
+        const address = document.getElementById('cust-address').value.trim();
+        const notes = document.getElementById('cust-notes').value.trim();
+
+        if (!name || !address) {
+            alert("من فضلك اكتب الاسم والعنوان بالتفصيل لإتمام الطلب.");
+            return;
+        }
+
+        let message = `*طلب جديد من Goal Keeper Store* ⚽🛒\n\n`;
+        message += `👤 *الاسم:* ${name}\n`;
+        message += `📍 *العنوان:* ${address}\n`;
+        if (notes) message += `📝 *ملاحظات/المقاسات:* ${notes}\n`;
+        message += `\n📦 *المنتجات المطلوبة:*\n`;
+
+        let total = 0;
+        cart.forEach((item, index) => {
+            let sub = item.price * item.qty;
+            total += sub;
+            message += `${index + 1}- ${item.name} (العدد: ${item.qty}) = ${sub} ج.م\n`;
+        });
+
+        message += `\n💰 *الإجمالي المطلوب:* ${total} ج.م`;
+
+        const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+        window.open(url, '_blank');
+    }
+
+    // تشغيل العرض الأولي
+    renderProducts();
+    updateCartUI();
+</script>
+
+</body>
 </html>
+
 
